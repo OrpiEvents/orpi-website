@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Menu — ORPI Events | Signature Cocktails 2026/27</title>
+<meta name="description" content="Browse ORPI Events' 2026/27 signature cocktail menu. Vodka, gin, whiskey, rum, tequila, sober serves and brand partners Pentire, Quarter Proof and Prepear. Build your shortlist.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Our Menu — ORPI Events">
+<meta property="og:description" content="Browse our 2026/27 signature cocktail menu and build your shortlist. Bespoke menus available for any event.">
+<meta property="og:url" content="https://orpi.events/menu">
+<meta property="og:site_name" content="ORPI Events">
+<meta property="og:image" content="https://orpi.events/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Menu — ORPI Events">
+<meta name="twitter:description" content="Browse our 2026/27 signature cocktail menu and build your shortlist.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='72' x='50' text-anchor='middle' font-size='52' font-family='Georgia,serif' fill='white'>O</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #080808;
+    --card-bg: #111111;
+    --card-hover: #161616;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.18);
+    --white: #ffffff;
+    --muted: rgba(255,255,255,0.45);
+    --subtle: rgba(255,255,255,0.2);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,8,8,0.96); border-bottom: 0.5px solid var(--border); backdrop-filter: blur(12px); }
+  .nav-logo { font-family: var(--font-display); font-size: 26px; font-weight: 400; letter-spacing: 0.18em; color: var(--white); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+  .nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-active { color: var(--white) !important; }
+  .nav-cta { font-size: 12px !important; color: var(--black) !important; background: var(--white); padding: 10px 24px; text-decoration: none; transition: opacity 0.2s !important; }
+  .nav-cta:hover { opacity: 0.85 !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 0.5px; background: var(--white); }
+
+  /* HERO */
+  .menu-hero { padding: 160px 48px 80px; border-bottom: 0.5px solid var(--border); position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%); }
+  .menu-hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--subtle); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; position: relative; }
+  .menu-hero-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--subtle); }
+  .menu-hero h1 { font-family: var(--font-display); font-size: clamp(52px, 8vw, 110px); font-weight: 300; line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 32px; position: relative; }
+  .menu-hero h1 em { font-style: italic; color: var(--muted); }
+  .menu-hero-sub { font-size: 14px; color: var(--muted); max-width: 520px; line-height: 1.8; position: relative; }
+  .menu-counts { display: flex; gap: 0; margin-top: 56px; border-top: 0.5px solid var(--border); position: relative; }
+  .menu-count { padding: 28px 40px 0 0; flex: 0 0 auto; }
+  .menu-count:not(:first-child) { padding-left: 40px; border-left: 0.5px solid var(--border); }
+  .count-num { font-family: var(--font-display); font-size: 40px; font-weight: 300; color: var(--white); line-height: 1; }
+  .count-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); margin-top: 6px; }
+
+  /* FILTER BAR */
+  .filter-bar { padding: 0 48px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; position: sticky; top: 65px; z-index: 50; background: rgba(8,8,8,0.97); backdrop-filter: blur(12px); overflow-x: auto; scrollbar-width: none; }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn { font-family: var(--font-body); font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: transparent; border: none; border-bottom: 2px solid transparent; padding: 22px 22px; cursor: pointer; transition: color 0.2s, border-color 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .filter-btn:hover { color: var(--white); }
+  .filter-btn.active { color: var(--white); border-bottom-color: var(--white); }
+  .filter-divider { width: 0.5px; height: 20px; background: var(--border-strong); flex-shrink: 0; margin: 0 4px; }
+
+  /* SHORTLIST BAR */
+  .shortlist-bar { padding: 14px 48px; background: var(--white); display: flex; justify-content: space-between; align-items: center; transition: transform 0.3s ease, opacity 0.3s ease; transform: translateY(-100%); opacity: 0; position: sticky; top: 113px; z-index: 49; }
+  .shortlist-bar.visible { transform: translateY(0); opacity: 1; }
+  .shortlist-text { font-size: 12px; font-weight: 400; letter-spacing: 0.08em; color: var(--black); }
+  .shortlist-text span { font-weight: 500; }
+  .shortlist-actions { display: flex; gap: 16px; align-items: center; }
+  .shortlist-view { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); background: transparent; border: 0.5px solid rgba(0,0,0,0.3); padding: 7px 18px; cursor: pointer; }
+  .shortlist-enquire { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--black); border: none; padding: 8px 20px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+  /* CUSTOM CALLOUT */
+  .custom-callout { padding: 24px 48px; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 24px; background: var(--card-bg); }
+  .callout-inner { display: flex; align-items: center; gap: 20px; }
+  .callout-bar { width: 2px; height: 36px; background: var(--white); flex-shrink: 0; }
+  .callout-title { font-size: 14px; font-weight: 400; color: var(--white); margin-bottom: 4px; }
+  .callout-sub { font-size: 12px; font-weight: 300; color: var(--muted); }
+  .callout-link { flex-shrink: 0; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); border: 0.5px solid var(--border-strong); padding: 10px 22px; text-decoration: none; white-space: nowrap; }
+
+  /* MENU SECTIONS */
+  .menu-section { padding: 72px 48px; border-bottom: 0.5px solid var(--border); }
+  .menu-section.hidden { display: none; }
+  .spirit-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 48px; }
+  .spirit-name { font-family: var(--font-display); font-size: clamp(36px, 5vw, 60px); font-weight: 300; font-style: italic; color: var(--white); line-height: 1; }
+  .spirit-count { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); }
+  .cocktail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+  .cocktail-card { background: var(--card-bg); padding: 32px 28px; position: relative; cursor: pointer; transition: background 0.25s; user-select: none; }
+  .cocktail-card:hover { background: var(--card-hover); }
+  .cocktail-card.selected { background: var(--white); }
+  .cocktail-name { font-family: var(--font-display); font-size: 22px; font-weight: 400; color: var(--white); margin-bottom: 8px; line-height: 1.2; transition: color 0.25s; }
+  .cocktail-card.selected .cocktail-name { color: var(--black); }
+  .cocktail-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.7; transition: color 0.25s; }
+  .cocktail-card.selected .cocktail-desc { color: rgba(0,0,0,0.55); }
+  .cocktail-check { position: absolute; top: 20px; right: 20px; width: 20px; height: 20px; border: 0.5px solid var(--border-strong); display: flex; align-items: center; justify-content: center; transition: background 0.25s, border-color 0.25s; }
+  .cocktail-card.selected .cocktail-check { background: var(--black); border-color: var(--black); }
+  .cocktail-check svg { width: 10px; height: 10px; stroke: var(--white); fill: none; stroke-width: 2; opacity: 0; transition: opacity 0.2s; }
+  .cocktail-card.selected .cocktail-check svg { opacity: 1; }
+  .cocktail-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--subtle); border: 0.5px solid var(--border); padding: 3px 10px; margin-bottom: 14px; transition: color 0.25s, border-color 0.25s; }
+  .cocktail-card.selected .cocktail-tag { color: rgba(0,0,0,0.4); border-color: rgba(0,0,0,0.15); }
+  .tag-star { color: #c9a96e; font-size: 9px; }
+  .cocktail-card.selected .tag-star { color: rgba(0,0,0,0.3); }
+  .vegan-badge { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-left: 4px; }
+  .cocktail-card.selected .vegan-badge { color: rgba(0,0,0,0.3); }
+
+  /* BRAND SECTIONS */
+  .brand-section { padding: 72px 48px; border-bottom: 0.5px solid var(--border); }
+  .brand-section.hidden { display: none; }
+  .brand-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 0.5px solid var(--border); }
+  .brand-name { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 300; font-style: italic; color: var(--white); line-height: 1; margin-bottom: 16px; }
+  .brand-tagline { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 480px; }
+  .brand-badge { border: 0.5px solid var(--border-strong); padding: 14px 24px; text-align: center; flex-shrink: 0; }
+  .brand-badge-type { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--subtle); margin-bottom: 4px; }
+  .brand-badge-name { font-family: var(--font-display); font-size: 18px; font-weight: 400; color: var(--white); }
+
+  /* PARTNER BANNER */
+  .partner-banner { padding: 64px 48px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .partner-eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--subtle); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .partner-eyebrow::before { content: ''; display: block; width: 20px; height: 0.5px; background: var(--subtle); }
+  .partner-heading { font-family: var(--font-display); font-size: 36px; font-weight: 300; font-style: italic; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+  .partner-body { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 480px; }
+  .partner-logos { display: flex; gap: 16px; flex-shrink: 0; }
+  .partner-logo-badge { border: 0.5px solid var(--border-strong); padding: 20px 28px; text-align: center; min-width: 120px; }
+  .partner-logo-badge-name { font-family: var(--font-display); font-size: 18px; font-weight: 400; letter-spacing: 0.08em; color: var(--white); }
+  .partner-logo-badge-sub { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); margin-top: 4px; }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--card-bg); border: 0.5px solid var(--border-strong); width: 100%; max-width: 560px; max-height: 80vh; overflow-y: auto; }
+  .modal-header { padding: 32px 36px 24px; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .modal-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; font-style: italic; color: var(--white); }
+  .modal-close { width: 32px; height: 32px; border: 0.5px solid var(--border-strong); background: transparent; color: var(--muted); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .modal-body { padding: 24px 36px; }
+  .modal-drink-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 0.5px solid var(--border); }
+  .modal-drink-item:last-child { border-bottom: none; }
+  .modal-drink-name { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: var(--white); }
+  .modal-drink-spirit { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); }
+  .modal-remove { background: transparent; border: none; color: var(--subtle); cursor: pointer; font-size: 18px; padding: 4px 8px; transition: color 0.2s; }
+  .modal-remove:hover { color: var(--white); }
+  .modal-footer { padding: 24px 36px; border-top: 0.5px solid var(--border); }
+  .modal-note { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+  .modal-enquire { display: block; width: 100%; background: var(--white); color: var(--black); font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 16px; text-align: center; border: none; cursor: pointer; }
+  .empty-shortlist { text-align: center; padding: 48px 0; color: var(--muted); font-size: 14px; }
+
+  /* CTA */
+  .menu-cta { padding: 96px 48px; text-align: center; border-bottom: 0.5px solid var(--border); }
+  .menu-cta h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 60px); font-weight: 300; color: var(--white); margin-bottom: 16px; line-height: 1.1; }
+  .menu-cta h2 em { font-style: italic; color: var(--muted); }
+  .menu-cta p { font-size: 14px; color: var(--muted); margin-bottom: 40px; line-height: 1.8; max-width: 440px; margin-left: auto; margin-right: auto; }
+  .btn-primary { display: inline-block; background: var(--white); color: var(--black); font-family: var(--font-body); font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 14px 40px; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer { padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 400; letter-spacing: 0.15em; color: var(--white); text-decoration: none; }
+  .footer-copy { font-size: 11px; color: var(--subtle); }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .menu-hero { padding: 120px 24px 56px; }
+    .menu-counts { flex-wrap: wrap; }
+    .menu-count:not(:first-child) { border-left: none; padding-left: 0; }
+    .filter-bar { padding: 0 16px; }
+    .filter-btn { padding: 18px 14px; }
+    .custom-callout { flex-direction: column; align-items: flex-start; padding: 24px; }
+    .menu-section, .brand-section { padding: 48px 24px; }
+    .cocktail-grid { grid-template-columns: 1fr 1fr; }
+    .brand-header { flex-direction: column; gap: 24px; }
+    .partner-banner { flex-direction: column; padding: 48px 24px; }
+    .partner-logos { width: 100%; }
+    .partner-logo-badge { flex: 1; }
+    .menu-cta { padding: 64px 24px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+    .shortlist-bar { padding: 14px 24px; }
+  }
+  @media (max-width: 600px) {
+    .cocktail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ORPI</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html" class="nav-active">Menu</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Book now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="menu-hero">
+  <div class="hero-grid"></div>
+  <p class="menu-hero-eyebrow">2026/27 cocktail list — April 2026</p>
+  <h1>A taste of<br><em>what we do.</em></h1>
+  <p class="menu-hero-sub">This is just the starting point. Every event gets a bespoke selection — if you can dream it, we can pour it. Browse our favourites, build a shortlist, and tell us what else you have in mind.</p>
+  <div class="menu-counts">
+    <div class="menu-count"><div class="count-num">Any</div><div class="count-label">Cocktail, your way</div></div>
+    <div class="menu-count"><div class="count-num">3</div><div class="count-label">Brand partners</div></div>
+    <div class="menu-count"><div class="count-num">5</div><div class="count-label">Spirits covered</div></div>
+    <div class="menu-count"><div class="count-num">Bespoke</div><div class="count-label">Every package</div></div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="vodka">Vodka</button>
+  <button class="filter-btn" data-filter="gin">Gin</button>
+  <button class="filter-btn" data-filter="whiskey">Whiskey</button>
+  <button class="filter-btn" data-filter="rum">Rum</button>
+  <button class="filter-btn" data-filter="tequila">Tequila / Mezcal</button>
+  <button class="filter-btn" data-filter="liqueur">Liqueur</button>
+  <button class="filter-btn" data-filter="sober">Sober Serves</button>
+  <div class="filter-divider"></div>
+  <button class="filter-btn" data-filter="pentire">Pentire</button>
+  <button class="filter-btn" data-filter="quarter">Quarter® Proof</button>
+  <button class="filter-btn" data-filter="prepear">Prepear</button>
+</div>
+
+<!-- SHORTLIST BAR -->
+<div class="shortlist-bar" id="shortlist-bar">
+  <p class="shortlist-text"><span id="shortlist-count">0</span> drinks in your shortlist</p>
+  <div class="shortlist-actions">
+    <button class="shortlist-view" id="view-shortlist-btn">View shortlist</button>
+    <a href="index.html#contact" class="shortlist-enquire">Enquire now</a>
+  </div>
+</div>
+
+<!-- CUSTOM CALLOUT -->
+<div class="custom-callout">
+  <div class="callout-inner">
+    <div class="callout-bar"></div>
+    <div>
+      <p class="callout-title">Don't see your perfect drink? Good — we love a challenge.</p>
+      <p class="callout-sub">This is just the starting point. We can make any classic, adapt anything on the list, or build something completely custom for your event.</p>
+    </div>
+  </div>
+  <a href="index.html#contact" class="callout-link">Tell us what you want</a>
+</div>
+
+<!-- VODKA -->
+<section class="menu-section" data-spirit="vodka">
+  <div class="spirit-header"><h2 class="spirit-name">Vodka</h2><span class="spirit-count">8 cocktails</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Chai-Spiced Martini" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Vodka — ORPI Signature <span class="vegan-badge">· Vegan</span></div>
+      <div class="cocktail-name">Chai-Spiced Martini</div>
+      <div class="cocktail-desc">Warm, aromatic and indulgently comforting. Fragrant chai spice and smooth vanilla make for a rich, dessert-like martini with real depth.</div>
+    </div>
+    <div class="cocktail-card" data-name="Chocolate Orange Martini" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Vodka — ORPI Signature <span class="vegan-badge">· Vegan</span></div>
+      <div class="cocktail-name">Chocolate Orange Martini</div>
+      <div class="cocktail-desc">Decadent and indulgent with a grown-up edge. Rich dark chocolate and bright citrus combine for a luxurious after-dinner cocktail.</div>
+    </div>
+    <div class="cocktail-card" data-name="Espresso Martini" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Vodka — ORPI Signature</div>
+      <div class="cocktail-name">Espresso Martini</div>
+      <div class="cocktail-desc">Rich, smooth and undeniably indulgent. A shot of fresh espresso meets velvety vodka for a cocktail that's equal parts energising and elegant.</div>
+    </div>
+    <div class="cocktail-card" data-name="Lychee Martini" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Vodka — ORPI Signature</div>
+      <div class="cocktail-name">Lychee Martini</div>
+      <div class="cocktail-desc">Delicate, floral and subtly exotic. Light and fragrant with a gentle sweetness. An elegant, easy-drinking martini with a distinctive twist.</div>
+    </div>
+    <div class="cocktail-card" data-name="Passionfruit Martini" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Vodka</div>
+      <div class="cocktail-name">Passionfruit Martini</div>
+      <div class="cocktail-desc">Vibrant, tropical and full of personality. Bright passionfruit and soft vanilla vodka deliver a punchy, aromatic cocktail with a gorgeous golden hue.</div>
+    </div>
+    <div class="cocktail-card" data-name="Cosmopolitan" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Vodka</div>
+      <div class="cocktail-name">Cosmopolitan</div>
+      <div class="cocktail-desc">A sleek, sharp and iconic classic. Crisp citrus and cranberry with a clean vodka base. Chic, refreshing and effortlessly cool.</div>
+    </div>
+    <div class="cocktail-card" data-name="Cucumber Cooler" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Vodka</div>
+      <div class="cocktail-name">Cucumber Cooler</div>
+      <div class="cocktail-desc">Clean, crisp and wonderfully refreshing. Delicate cucumber and fresh mint keep things light and bright. A perfect warm-weather sipper.</div>
+    </div>
+    <div class="cocktail-card" data-name="Blackberry Mule" data-spirit="Vodka">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Vodka</div>
+      <div class="cocktail-name">Blackberry Mule</div>
+      <div class="cocktail-desc">Fruity, sharp and fizzing with energy. Blackberry and lime bring a tart brightness, cooled by a spicy ginger beer finish.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GIN -->
+<section class="menu-section" data-spirit="gin">
+  <div class="spirit-header"><h2 class="spirit-name">Gin</h2><span class="spirit-count">6 cocktails</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Bramble" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Gin — ORPI Signature</div>
+      <div class="cocktail-name">Bramble</div>
+      <div class="cocktail-desc">A British classic with a fruity, tart edge. Crisp gin meets sweet blackberry for a beautifully balanced sip with a gorgeous deep purple hue.</div>
+    </div>
+    <div class="cocktail-card" data-name="Citrus Garden" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Gin</div>
+      <div class="cocktail-name">Citrus Garden</div>
+      <div class="cocktail-desc">Light and refreshing with a floral twist. Bright citrus notes are lifted by a fragrant herbal syrup and finished with a gentle effervescence.</div>
+    </div>
+    <div class="cocktail-card" data-name="Elderflower Collins" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Gin — ORPI Signature</div>
+      <div class="cocktail-name">Elderflower Collins</div>
+      <div class="cocktail-desc">Delicate and elegant. The soft sweetness of elderflower pairs with zesty lemon and a clean fizz. A timeless warm-weather favourite.</div>
+    </div>
+    <div class="cocktail-card" data-name="French 75" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Gin</div>
+      <div class="cocktail-name">French 75</div>
+      <div class="cocktail-desc">Sharp, sophisticated and celebratory. A gin sour base elevated with the sparkle of Champagne or Prosecco. Sleek and effervescent.</div>
+    </div>
+    <div class="cocktail-card" data-name="Negroni" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Gin — ORPI Signature</div>
+      <div class="cocktail-name">Negroni</div>
+      <div class="cocktail-desc">Bold, bitter and beautifully complex. A stirred classic with a rich herbal depth and a long, lingering finish. Not for the faint-hearted.</div>
+    </div>
+    <div class="cocktail-card" data-name="Raspberry Gimlet" data-spirit="Gin">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Gin</div>
+      <div class="cocktail-name">Raspberry Gimlet</div>
+      <div class="cocktail-desc">Vibrant and punchy with a fresh berry brightness. Tart lime and sweet raspberry sit alongside clean gin for a vividly coloured, moreish cocktail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHISKEY -->
+<section class="menu-section" data-spirit="whiskey">
+  <div class="spirit-header"><h2 class="spirit-name">Whiskey</h2><span class="spirit-count">7 cocktails</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Banoffee Old Fashioned" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Whiskey — ORPI Signature</div>
+      <div class="cocktail-name">Banoffee Old Fashioned</div>
+      <div class="cocktail-desc">A playful, dessert-inspired riff on a classic. Rich bourbon is warmed with toffee and banana notes and finished with a hint of dark chocolate.</div>
+    </div>
+    <div class="cocktail-card" data-name="Honey & Ginger Smash" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Whiskey — ORPI Signature</div>
+      <div class="cocktail-name">Honey &amp; Ginger Smash</div>
+      <div class="cocktail-desc">Bright and aromatic with a gentle spiced kick. Fresh ginger and honey bring warmth and sweetness to smooth bourbon, lifted with citrus and mint.</div>
+    </div>
+    <div class="cocktail-card" data-name="Maple Manhattan" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Whiskey</div>
+      <div class="cocktail-name">Maple Manhattan</div>
+      <div class="cocktail-desc">Silky, rich and deeply warming. A luxurious take on the Manhattan with a subtle maple sweetness that rounds out the whiskey beautifully.</div>
+    </div>
+    <div class="cocktail-card" data-name="New York Sour" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Whiskey</div>
+      <div class="cocktail-name">New York Sour</div>
+      <div class="cocktail-desc">A sophisticated layered classic. Smooth and citrusy with a velvety egg white texture, crowned with a striking float of red wine.</div>
+    </div>
+    <div class="cocktail-card" data-name="Old Fashioned" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Whiskey — ORPI Signature</div>
+      <div class="cocktail-name">Old Fashioned</div>
+      <div class="cocktail-desc">Our take on one of the world's oldest cocktails. Simple, stirred and spirit-forward. All about the whiskey, with just enough sweetness and bitters.</div>
+    </div>
+    <div class="cocktail-card" data-name="Smoked Boulevardier" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Whiskey</div>
+      <div class="cocktail-name">Smoked Boulevardier</div>
+      <div class="cocktail-desc">A theatrical, smoky twist on a Negroni-style classic. Bold bourbon meets bitter Campari and sweet vermouth, wrapped in a cloud of wood smoke.</div>
+    </div>
+    <div class="cocktail-card" data-name="Whisky Sour" data-spirit="Whiskey">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Whiskey</div>
+      <div class="cocktail-name">Whisky Sour</div>
+      <div class="cocktail-desc">A beautifully balanced classic. Sharp lemon, smooth whiskey and a light frothy top. Clean, satisfying and always a crowd-pleaser.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RUM -->
+<section class="menu-section" data-spirit="rum">
+  <div class="spirit-header"><h2 class="spirit-name">Rum</h2><span class="spirit-count">6 cocktails</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Classic Mojito" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Rum — ORPI Signature</div>
+      <div class="cocktail-name">Classic Mojito</div>
+      <div class="cocktail-desc">A timeless crowd-pleaser. Cool mint, sharp lime and gentle sweetness topped with a refreshing fizz. Light, lively and endlessly drinkable.</div>
+    </div>
+    <div class="cocktail-card" data-name="Coconut Rum Punch" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Rum — ORPI Signature</div>
+      <div class="cocktail-name">Coconut Rum Punch</div>
+      <div class="cocktail-desc">Tropical and indulgent. Creamy coconut and bright pineapple transport you straight to warmer climates. Smooth, sweet and summery.</div>
+    </div>
+    <div class="cocktail-card" data-name="Dark & Stormy" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Rum</div>
+      <div class="cocktail-name">Dark &amp; Stormy</div>
+      <div class="cocktail-desc">Warming and spiced with a fiery ginger kick. A bold, brooding combination that balances heat with depth. Best enjoyed slowly.</div>
+    </div>
+    <div class="cocktail-card" data-name="Mai Tai" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Rum</div>
+      <div class="cocktail-name">Mai Tai</div>
+      <div class="cocktail-desc">A tiki classic bursting with tropical fruit and layered rum complexity. Sweet, citrusy and wonderfully vibrant. A true holiday in a glass.</div>
+    </div>
+    <div class="cocktail-card" data-name="Pineapple Daiquiri" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Rum — ORPI Signature</div>
+      <div class="cocktail-name">Pineapple Daiquiri</div>
+      <div class="cocktail-desc">Fresh, zesty and irresistibly tropical. Bright pineapple and sharp lime balance beautifully against smooth white rum for a clean, punchy finish.</div>
+    </div>
+    <div class="cocktail-card" data-name="Spiced Rum Sour" data-spirit="Rum">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Rum</div>
+      <div class="cocktail-name">Spiced Rum Sour</div>
+      <div class="cocktail-desc">Rich and warming with a silky, frothy texture. Spiced rum brings depth and warmth, softened by citrus and a pillowy egg white finish.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEQUILA / MEZCAL -->
+<section class="menu-section" data-spirit="tequila">
+  <div class="spirit-header"><h2 class="spirit-name">Tequila / Mezcal</h2><span class="spirit-count">6 cocktails</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Chilli Margarita" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Tequila — ORPI Signature</div>
+      <div class="cocktail-name">Chilli Margarita</div>
+      <div class="cocktail-desc">Sweet mango meets fiery chilli heat in this bold, punchy twist on a classic. Exciting, complex and with a slow-building warmth.</div>
+    </div>
+    <div class="cocktail-card" data-name="Paloma" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Tequila</div>
+      <div class="cocktail-name">Paloma</div>
+      <div class="cocktail-desc">Light, fresh and wonderfully zesty. Grapefruit and lime bring a citrus brightness that lets the tequila shine. Clean, crisp and effortlessly stylish.</div>
+    </div>
+    <div class="cocktail-card" data-name="Smoked Pineapple Margarita" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Mezcal — ORPI Signature</div>
+      <div class="cocktail-name">Smoked Pineapple Margarita</div>
+      <div class="cocktail-desc">A dramatic, smoky twist on the classic margarita. Sweet pineapple and agave are underpinned by the rich, earthy depth of mezcal.</div>
+    </div>
+    <div class="cocktail-card" data-name="Tequila Sunrise" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Tequila — ORPI Signature</div>
+      <div class="cocktail-name">Tequila Sunrise</div>
+      <div class="cocktail-desc">Vibrant, fruity and visually striking. A gentle gradient of citrus and grenadine makes this as beautiful to look at as it is to drink.</div>
+    </div>
+    <div class="cocktail-card" data-name="Tommy's Margarita" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Tequila</div>
+      <div class="cocktail-name">Tommy's Margarita</div>
+      <div class="cocktail-desc">The purist's margarita. Clean, sharp and honest. Letting the quality of the tequila and the brightness of fresh lime take centre stage.</div>
+    </div>
+    <div class="cocktail-card" data-name="Watermelon Breeze" data-spirit="Tequila/Mezcal">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Tequila</div>
+      <div class="cocktail-name">Watermelon Breeze</div>
+      <div class="cocktail-desc">Light and juicy with a summery sweetness. Fresh watermelon and citrus make for a beautifully refreshing, easy-drinking cocktail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIQUEUR -->
+<section class="menu-section" data-spirit="liqueur">
+  <div class="spirit-header"><h2 class="spirit-name">Liqueur</h2><span class="spirit-count">1 cocktail</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Cherry Martini" data-spirit="Liqueur">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Liqueur — ORPI Signature</div>
+      <div class="cocktail-name">Cherry Martini</div>
+      <div class="cocktail-desc">Sweet, rich and playfully indulgent. Amaretto warmth meets cherry sweetness for a smooth, dessert-style martini with a fun, nostalgic edge.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBER SERVES -->
+<section class="menu-section" data-spirit="sober">
+  <div class="spirit-header"><h2 class="spirit-name">Sober Serves</h2><span class="spirit-count">8 serves</span></div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Cucumber & Tonic Highball" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Sober Serves</div>
+      <div class="cocktail-name">Cucumber &amp; Tonic Highball</div>
+      <div class="cocktail-desc">Clean, cool and effortlessly refreshing. Crisp cucumber and delicate elderflower are lifted by a sharp citrus edge and a gentle tonic fizz.</div>
+    </div>
+    <div class="cocktail-card" data-name="Spiced Mango" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Sober Serves — ORPI Signature</div>
+      <div class="cocktail-name">Spiced Mango</div>
+      <div class="cocktail-desc">Sweet mango meets fiery chilli heat in this bold, punchy twist. Exciting, complex and with a slow-building warmth.</div>
+    </div>
+    <div class="cocktail-card" data-name="Lemon & Ginger Highball" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Sober Serves</div>
+      <div class="cocktail-name">Lemon &amp; Ginger Highball</div>
+      <div class="cocktail-desc">Zingy, warming and wonderfully lively. Sharp lemon and a double hit of ginger make for a fiery, refreshing highball with real personality.</div>
+    </div>
+    <div class="cocktail-card" data-name="Summer Berry Refresher" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Sober Serves</div>
+      <div class="cocktail-name">Summer Berry Refresher</div>
+      <div class="cocktail-desc">Rich, fruity and bursting with colour. A medley of summer berries blended with citrus and a light fizz. Indulgent yet refreshing.</div>
+    </div>
+    <div class="cocktail-card" data-name="Mango Tang" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Sober Serves — ORPI Signature</div>
+      <div class="cocktail-name">Mango Tang</div>
+      <div class="cocktail-desc">Bold, tropical and unapologetically punchy. Sweet mango is cut through with sharp lime and a slow-building spiced heat. Short, sharp and seriously moreish.</div>
+    </div>
+    <div class="cocktail-card" data-name="Lychee Spritz" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag"><span class="tag-star">★</span> Sober Serves — ORPI Signature</div>
+      <div class="cocktail-name">Lychee Spritz</div>
+      <div class="cocktail-desc">Delicate, floral and lightly sparkling. Fragrant lychee and gentle citrus make for an elegant, easy-drinking spritz with a subtly exotic finish.</div>
+    </div>
+    <div class="cocktail-card" data-name="Passionfruit Fizz" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Sober Serves</div>
+      <div class="cocktail-name">Passionfruit Fizz</div>
+      <div class="cocktail-desc">Vibrant, tangy and full of tropical character. Bright passionfruit and zesty lime topped with a light effervescence. Lively, fresh and endlessly drinkable.</div>
+    </div>
+    <div class="cocktail-card" data-name="Mango Mojito" data-spirit="Sober Serves">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Sober Serves</div>
+      <div class="cocktail-name">Mango Mojito</div>
+      <div class="cocktail-desc">Bright, tropical and full of life. Juicy mango and fresh mint come together with a sharp lime kick for a vibrant, alcohol-free crowd-pleaser.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PENTIRE -->
+<section class="brand-section" data-spirit="pentire">
+  <div class="brand-header">
+    <div>
+      <div class="brand-name">Pentire</div>
+      <p class="brand-tagline">Cornwall-born and alcohol-free, Pentire is distilled from botanicals native to the Cornish coastline. Rated No.1 non-alcoholic spirit by The New York Times three years running — a sophisticated, considered choice for guests who want something special without the alcohol.</p>
+    </div>
+    <div class="brand-badge">
+      <div class="brand-badge-type">Brand Partner</div>
+      <div class="brand-badge-name">0% Alcohol</div>
+    </div>
+  </div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Coastal Spritz" data-spirit="Pentire">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Pentire · 0% Alcohol</div>
+      <div class="cocktail-name">Coastal Spritz</div>
+      <div class="cocktail-desc">Light, bitter and wonderfully aromatic. Coastal botanical depth, lifted by a gentle effervescence and a fragrant herbal garnish. The perfect alcohol-free opener.</div>
+    </div>
+    <div class="cocktail-card" data-name="Pentire Spicy Margarita" data-spirit="Pentire">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Pentire · 0% Alcohol</div>
+      <div class="cocktail-name">Spicy Margarita</div>
+      <div class="cocktail-desc">Bold, citrusy and with a satisfying chilli kick. Bright lime and agave bring classic margarita energy, underpinned by earthy botanical depth. Zero alcohol, full character.</div>
+    </div>
+    <div class="cocktail-card" data-name="Beach House Paloma" data-spirit="Pentire">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Pentire · 0% Alcohol</div>
+      <div class="cocktail-name">Beach House Paloma</div>
+      <div class="cocktail-desc">Fresh and sun-drenched with a beautifully zesty edge. Pink grapefruit and lime shine alongside coastal botanicals. Needs nothing more than ice and good company.</div>
+    </div>
+    <div class="cocktail-card" data-name="Pentire Gimlet" data-spirit="Pentire">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Pentire · 0% Alcohol</div>
+      <div class="cocktail-name">Pentire Gimlet</div>
+      <div class="cocktail-desc">Crisp, sharp and quietly sophisticated. Fresh lime and a whisper of maple balance beautifully against aromatic coastal botanicals, finished with fresh bay. Elegantly simple.</div>
+    </div>
+    <div class="cocktail-card" data-name="Pentire Negroni" data-spirit="Pentire">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Pentire · 0% Alcohol</div>
+      <div class="cocktail-name">Pentire Negroni</div>
+      <div class="cocktail-desc">A reimagined classic with real depth and bitterness. All the richness and complexity of a traditional Negroni. Alcohol-free never tasted this good.</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUARTER PROOF -->
+<section class="brand-section" data-spirit="quarter">
+  <div class="brand-header">
+    <div>
+      <div class="brand-name">Quarter® Proof</div>
+      <p class="brand-tagline">Mid-strength spirits at 15% ABV — the sweet spot between full strength and nothing at all. Full-strength flavour, without the full-strength consequences. Welcome to Spirits 3.0.</p>
+    </div>
+    <div class="brand-badge">
+      <div class="brand-badge-type">Brand Partner</div>
+      <div class="brand-badge-name">15% ABV</div>
+    </div>
+  </div>
+  <div class="cocktail-grid">
+    <div class="cocktail-card" data-name="Middy Margarita" data-spirit="Quarter Proof">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Quarter® Proof · 15% ABV</div>
+      <div class="cocktail-name">Middy Margarita</div>
+      <div class="cocktail-desc">All the bold, citrusy character of a classic margarita at a fraction of the strength. Sharp lime and agave sweetness with a genuinely tequila-like base.</div>
+    </div>
+    <div class="cocktail-card" data-name="Dirty Martini" data-spirit="Quarter Proof">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Quarter® Proof · 15% ABV</div>
+      <div class="cocktail-name">Dirty Martini</div>
+      <div class="cocktail-desc">Savoury, sophisticated and stirred to perfection. Briny olive and dry vermouth bring real depth and complexity. All the theatre of a proper martini, with a gentler finish.</div>
+    </div>
+    <div class="cocktail-card" data-name="QP Paloma" data-spirit="Quarter Proof">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Quarter® Proof · 15% ABV</div>
+      <div class="cocktail-name">Paloma</div>
+      <div class="cocktail-desc">Bright, citrusy and completely moreish. Fresh pink grapefruit and sharp lime alongside a light agave spirit. Clean, fizzy and as refreshing as it is low in alcohol.</div>
+    </div>
+    <div class="cocktail-card" data-name="QP Espresso Martini" data-spirit="Quarter Proof">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Quarter® Proof · 15% ABV</div>
+      <div class="cocktail-name">Espresso Martini</div>
+      <div class="cocktail-desc">Rich, smooth and indulgent with just enough of a kick. Fresh espresso and coffee liqueur balanced by a clean low-ABV vodka base. Energising and elegant.</div>
+    </div>
+    <div class="cocktail-card" data-name="Blood Orange Spritz" data-spirit="Quarter Proof">
+      <div class="cocktail-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+      <div class="cocktail-tag">Quarter® Proof · 15% ABV</div>
+      <div class="cocktail-name">Blood Orange Spritz</div>
+      <div class="cocktail-desc">Vibrant, fruity and strikingly coloured. Bitter Italian aperitif notes and sweet blood orange with a gentle fizz. A beautiful aperitivo alternative that won't slow the evening down.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREPEAR -->
+<section class="brand-section" data-spirit="prepear">
+  <div class="brand-header">
+    <div>
+      <div class="brand-name">Prepear</div>
+      <p class="brand-tagline">Expertly crafted from whole Shingo Korean pears grown in Naju, South Korea. 100% natural, vegan and free from preservatives, added sugar and artificial flavours. Rooted in Korean wellness traditions — one ingredient, at its purest. Be the talk of your night.</p>
+    </div>
+    <div class="brand-badge">
+      <div class="brand-badge-type">Brand Partner</div>
+      <div class="brand-badge-name">100% Natural</div>
+    </div>
+  </div>
+  <div style="border: 0.5px solid var(--border); padding: 48px; text-align: center;">
+    <p style="font-family: var(--font-display); font-size: 28px; font-weight: 300; font-style: italic; color: var(--white); margin-bottom: 16px;">Live like there's no tomorrow.<br>Prepear like there is.</p>
+    <p style="font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 480px; margin: 0 auto 32px;">Available at your event to enjoy before, during or after. Ask us about adding Prepear to your package.</p>
+    <a href="index.html#contact" class="btn-primary">Ask about Prepear</a>
+  </div>
+</section>
+
+<!-- PARTNER BANNER -->
+<div class="partner-banner">
+  <div>
+    <p class="partner-eyebrow">Our brand partners</p>
+    <h2 class="partner-heading">Curated with the best in the business.</h2>
+    <p class="partner-body">We partner with brands we genuinely believe in. Every drink we serve — alcoholic or not — meets the ORPI standard.</p>
+  </div>
+  <div class="partner-logos">
+    <div class="partner-logo-badge"><div class="partner-logo-badge-name">Pentire</div><div class="partner-logo-badge-sub">0% spirits</div></div>
+    <div class="partner-logo-badge"><div class="partner-logo-badge-name">Quarter® Proof</div><div class="partner-logo-badge-sub">15% ABV</div></div>
+    <div class="partner-logo-badge"><div class="partner-logo-badge-name">Prepear</div><div class="partner-logo-badge-sub">Korean pear wellness</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="menu-cta">
+  <h2>This is just<br><em>the starting point.</em></h2>
+  <p>Shortlist your favourites above, then get in touch. Tell us what else you have in mind — we'll build a bespoke menu around your event, your guests and your vision.</p>
+  <a href="index.html#contact" class="btn-primary">Get a quote</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">ORPI</a>
+  <p class="footer-copy">&copy; 2026 ORPI Events. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Your shortlist</h3>
+      <button class="modal-close" id="modal-close">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <div class="empty-shortlist">No drinks added yet — tap any cocktail to shortlist it.</div>
+    </div>
+    <div class="modal-footer">
+      <p class="modal-note">This is your starting point — not your limit. Share your shortlist and any other ideas when you enquire, and we'll build something bespoke around your event.</p>
+      <a href="index.html#contact" class="modal-enquire">Enquire with this shortlist</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const shortlist = new Set();
+
+  document.querySelectorAll('.cocktail-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const name = card.dataset.name;
+      if (shortlist.has(name)) { shortlist.delete(name); card.classList.remove('selected'); }
+      else { shortlist.add(name); card.classList.add('selected'); }
+      updateShortlistBar();
+    });
+  });
+
+  function updateShortlistBar() {
+    const bar = document.getElementById('shortlist-bar');
+    document.getElementById('shortlist-count').textContent = shortlist.size;
+    bar.classList.toggle('visible', shortlist.size > 0);
+  }
+
+  document.getElementById('view-shortlist-btn').addEventListener('click', openModal);
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-overlay').addEventListener('click', e => { if (e.target === document.getElementById('modal-overlay')) closeModal(); });
+
+  function openModal() {
+    const body = document.getElementById('modal-body');
+    if (shortlist.size === 0) {
+      body.innerHTML = '<div class="empty-shortlist">No drinks added yet — tap any cocktail to shortlist it.</div>';
+    } else {
+      body.innerHTML = [...shortlist].map(name => {
+        const card = document.querySelector(`.cocktail-card[data-name="${name}"]`);
+        const spirit = card ? card.dataset.spirit : '';
+        return `<div class="modal-drink-item"><div><div class="modal-drink-name">${name}</div><div class="modal-drink-spirit">${spirit}</div></div><button class="modal-remove" data-name="${name}">&times;</button></div>`;
+      }).join('');
+      body.querySelectorAll('.modal-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.dataset.name;
+          shortlist.delete(name);
+          document.querySelector(`.cocktail-card[data-name="${name}"]`)?.classList.remove('selected');
+          updateShortlistBar();
+          openModal();
+        });
+      });
+    }
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.menu-section, .brand-section').forEach(section => {
+        if (filter === 'all') section.classList.remove('hidden');
+        else section.classList.toggle('hidden', section.dataset.spirit !== filter);
+      });
+    });
+  });
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    const isOpen = links.style.display === 'flex';
+    if (isOpen) { links.style.display = 'none'; }
+    else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(8,8,8,0.98);padding:24px;gap:20px;border-bottom:0.5px solid rgba(255,255,255,0.08)'; }
+  });
+</script>
+</body>
+</html>

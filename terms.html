@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions — ORPI Events</title>
+<meta name="description" content="ORPI Events mobile bar terms and conditions. Everything you need to know about bookings, payments, cancellations and service.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='72' x='50' text-anchor='middle' font-size='52' font-family='Georgia,serif' fill='white'>O</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #080808;
+    --card-bg: #111111;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.18);
+    --white: #ffffff;
+    --muted: rgba(255,255,255,0.45);
+    --subtle: rgba(255,255,255,0.2);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,8,8,0.96); border-bottom: 0.5px solid var(--border); backdrop-filter: blur(12px); }
+  .nav-logo { font-family: var(--font-display); font-size: 26px; font-weight: 400; letter-spacing: 0.18em; color: var(--white); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+  .nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { font-size: 12px !important; color: var(--black) !important; background: var(--white); padding: 10px 24px; text-decoration: none !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 0.5px; background: var(--white); }
+
+  /* HERO */
+  .hero { padding: 160px 48px 80px; border-bottom: 0.5px solid var(--border); position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 80px 80px; mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 50%, transparent 100%); }
+  .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--subtle); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; position: relative; }
+  .eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--subtle); }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(48px, 7vw, 96px); font-weight: 300; line-height: 0.95; letter-spacing: -0.01em; color: var(--white); margin-bottom: 24px; position: relative; }
+  .hero h1 em { font-style: italic; color: var(--muted); }
+  .hero-sub { font-size: 13px; color: var(--muted); max-width: 480px; line-height: 1.8; position: relative; }
+
+  /* CONTENT */
+  .terms-body { max-width: 760px; margin: 0 auto; padding: 80px 48px; }
+  .terms-intro { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 56px; padding-bottom: 56px; border-bottom: 0.5px solid var(--border); }
+
+  .clause { margin-bottom: 0; border-bottom: 0.5px solid var(--border); padding: 36px 0; }
+  .clause:last-child { border-bottom: none; }
+  .clause-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 14px; }
+  .clause-num { font-family: var(--font-display); font-size: 13px; font-weight: 300; color: var(--subtle); letter-spacing: 0.1em; flex-shrink: 0; width: 28px; }
+  .clause-title { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); }
+  .clause-body { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.9; padding-left: 48px; }
+  .clause-body p { margin-bottom: 10px; }
+  .clause-body p:last-child { margin-bottom: 0; }
+
+  /* CANCELLATION TABLE */
+  .cancel-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .cancel-table th { font-size: 10px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); padding: 10px 16px; text-align: left; border-bottom: 0.5px solid var(--border-strong); }
+  .cancel-table td { font-size: 12px; font-weight: 300; color: var(--muted); padding: 14px 16px; border-bottom: 0.5px solid var(--border); }
+  .cancel-table tr:last-child td { border-bottom: none; }
+  .cancel-table td:last-child { color: var(--white); font-weight: 400; }
+
+  /* HIGHLIGHTED CLAUSE */
+  .clause-highlight { background: var(--card-bg); border: 0.5px solid var(--border-strong); padding: 36px 40px; margin-bottom: 0; border-bottom: none; }
+  .clause-highlight .clause-title { color: var(--white); }
+
+  /* SIGN-OFF */
+  .sign-off { padding: 56px 48px; border-top: 0.5px solid var(--border); max-width: 760px; margin: 0 auto; }
+  .sign-off p { font-size: 13px; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
+  .sign-off a { color: var(--white); text-decoration: none; border-bottom: 0.5px solid var(--border-strong); padding-bottom: 1px; }
+
+  /* FOOTER */
+  footer { padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid var(--border); }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 400; letter-spacing: 0.15em; color: var(--white); text-decoration: none; }
+  .footer-copy { font-size: 11px; color: var(--subtle); }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--subtle); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 120px 24px 56px; }
+    .terms-body { padding: 48px 24px; }
+    .sign-off { padding: 40px 24px; }
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+    .clause-highlight { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ORPI</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Book now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <p class="eyebrow">ORPI Events Ltd — Mobile Bar</p>
+  <h1>Terms &amp;<br><em>Conditions.</em></h1>
+  <p class="hero-sub">Please read these carefully before confirming your booking. If you have any questions, we're always happy to talk things through.</p>
+</div>
+
+<!-- TERMS BODY -->
+<div class="terms-body">
+
+  <p class="terms-intro">These terms and conditions apply to all bookings made with ORPI Events Ltd. By confirming your booking, you agree to the terms set out below. Last updated: April 2026.</p>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">01</span><span class="clause-title">Booking Confirmation</span></div>
+    <div class="clause-body"><p>Your booking is confirmed once we receive your written agreement and a 50% deposit. Until both are in place, your date remains available to other clients.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">02</span><span class="clause-title">Quote Validity</span></div>
+    <div class="clause-body"><p>All quotes are valid for 14 days from the date of issue. After this period, pricing and availability may be subject to change — please get in touch and we'll do our best to honour the original quote.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">03</span><span class="clause-title">Final Payment</span></div>
+    <div class="clause-body"><p>The remaining 50% balance is due no later than 14 days before your event. If you need a different arrangement, just let us know in writing. Late payments may result in additional charges.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">04</span><span class="clause-title">Guest Numbers & Minimum Guarantee</span></div>
+    <div class="clause-body">
+      <p>Your quote is based on the guest numbers provided at the time of booking. This quoted number becomes your <strong style="color: var(--white); font-weight: 500;">minimum guaranteed charge</strong> — regardless of any reduction in final guest numbers.</p>
+      <p>Please confirm your final guest numbers at least 7 days before the event. If your final numbers are lower than your quoted number, the original quoted price remains payable in full. If numbers increase, additional charges will apply and will be agreed in writing.</p>
+      <p>We recommend providing an accurate guest count at the time of enquiry to ensure your quote reflects your event correctly from the outset.</p>
+    </div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">05</span><span class="clause-title">Alcohol Supply (Full Bar Packages)</span></div>
+    <div class="clause-body"><p>Where we're supplying the alcohol, ORPI Events must remain the sole provider of alcoholic drinks at your event, unless we've agreed otherwise in writing. This helps us ensure quality and compliance throughout.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">06</span><span class="clause-title">Cancellations</span></div>
+    <div class="clause-body">
+      <p>We understand that plans can change. Here's how cancellations work:</p>
+      <table class="cancel-table">
+        <thead>
+          <tr><th>Timing</th><th>Charge</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>More than 60 days before the event</td><td>Deposit retained — no further charge</td></tr>
+          <tr><td>Within 60 days of the event</td><td>50% of the total fee</td></tr>
+          <tr><td>Within 14 days of the event</td><td>100% of the total fee</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">07</span><span class="clause-title">Access, Parking & Power</span></div>
+    <div class="clause-body"><p>Please make sure there's suitable access for loading and unloading, with parking close to the venue. You'll also need to provide an adequate power supply unless we've agreed an alternative in writing.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">08</span><span class="clause-title">Venue Delays</span></div>
+    <div class="clause-body"><p>ORPI Events is not liable for delays caused by the venue, other suppliers, or circumstances beyond our control. We'll always do our best to adapt and keep things running smoothly.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">09</span><span class="clause-title">Client-Provided Alcohol (Bar-Only Packages)</span></div>
+    <div class="clause-body"><p>If you're supplying your own alcohol or mixers, we can't be responsible for shortages, quality, or consumption levels. If your supply runs low, we may be able to provide backup stock — this will be charged at agreed rates.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">10</span><span class="clause-title">Stock Ownership (Full Bar Packages)</span></div>
+    <div class="clause-body"><p>All alcohol and supplies brought by ORPI Events remain our property. Any unused stock will be taken away after the event unless we've agreed otherwise in writing.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">11</span><span class="clause-title">Equipment</span></div>
+    <div class="clause-body"><p>The client is responsible for any damage to or loss of our equipment during the event. Any repair or replacement costs will be agreed with you directly.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">12</span><span class="clause-title">Glassware</span></div>
+    <div class="clause-body"><p>Breakages or losses will be charged at agreed rates. Where possible, we'll let you know if there's a concern on the day.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">13</span><span class="clause-title">Responsible Service</span></div>
+    <div class="clause-body"><p>Our staff are trained to serve responsibly and in line with UK licensing laws. We reserve the right to refuse service to guests who appear intoxicated, or to pause service if staff safety is at risk. Any abusive or threatening behaviour toward our team will result in immediate suspension of service, with no refund.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">14</span><span class="clause-title">Overtime</span></div>
+    <div class="clause-body"><p>If you'd like to extend service beyond the agreed finish time, just ask — additional charges will be agreed on the night.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">15</span><span class="clause-title">Outdoor Events & Weather</span></div>
+    <div class="clause-body"><p>We're not liable for delays or disruptions caused by adverse weather. If it genuinely isn't safe to continue service, we'll let you know as soon as possible.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">16</span><span class="clause-title">Bar Area Cleaning</span></div>
+    <div class="clause-body"><p>We'll keep the bar area tidy throughout the event and clear it down at the end. General venue cleaning is the responsibility of you or your venue.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">17</span><span class="clause-title">Licensing</span></div>
+    <div class="clause-body"><p>Where required, we'll apply for a Temporary Event Notice (TEN) on your behalf. Any refusal or delay from the licensing authority is outside our control.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">18</span><span class="clause-title">Waste</span></div>
+    <div class="clause-body"><p>Standard bar waste will be removed by our team. Excessive waste beyond the normal scope may incur an additional charge.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">19</span><span class="clause-title">Photography & Social Media</span></div>
+    <div class="clause-body"><p>We love sharing our work and may photograph or film the bar setup and service for marketing purposes. If you'd prefer we don't, simply let us know in writing before the event — no problem at all.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">20</span><span class="clause-title">Liability</span></div>
+    <div class="clause-body"><p>ORPI Events is not liable for personal injury resulting from guest intoxication, client-supplied alcohol, or delays caused by third parties. Our total liability is limited to the amount you've paid for your booking.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">21</span><span class="clause-title">Responsible Service & Guest Behaviour</span></div>
+    <div class="clause-body"><p>We'll always serve responsibly and in line with UK law. The client accepts responsibility for the conduct of their guests.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">22</span><span class="clause-title">Bar Placement</span></div>
+    <div class="clause-body"><p>Please ensure the bar location is safe, level, and sheltered if outdoors, with enough space for our team to operate. Any last-minute changes to placement on the day may incur additional charges.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">23</span><span class="clause-title">Force Majeure</span></div>
+    <div class="clause-body"><p>We're not liable for service disruptions caused by events beyond our control — including extreme weather, illness, road closures, strikes, equipment failure, or venue restrictions. We'll always communicate with you as early as possible.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">24</span><span class="clause-title">Alcohol Cut-Off Time</span></div>
+    <div class="clause-body"><p>We'll stop serving at the agreed finish time, or earlier if required by law. We're unable to extend service beyond legal limits, even at your request.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">25</span><span class="clause-title">Venue Restrictions</span></div>
+    <div class="clause-body"><p>If the venue imposes rules that affect our service — such as no glassware, restricted areas, or early pack-down — we're not responsible for any resulting limitations to the service provided.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">26</span><span class="clause-title">Product Substitutions</span></div>
+    <div class="clause-body"><p>If a specific brand you've requested isn't available, we'll substitute it with an equal or higher-quality alternative and let you know in advance where possible.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">27</span><span class="clause-title">Early Setup</span></div>
+    <div class="clause-body"><p>If early setup or extended idle time is required before the event begins, an additional fee may apply. We'll agree this with you in advance.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">28</span><span class="clause-title">Water Access</span></div>
+    <div class="clause-body"><p>Please ensure access to running water is available at the venue, or let us know in advance if it isn't. Arranging an alternative water supply may incur an additional charge.</p></div>
+  </div>
+
+  <div class="clause">
+    <div class="clause-header"><span class="clause-num">29</span><span class="clause-title">Fire Safety</span></div>
+    <div class="clause-body"><p>ORPI Events complies with all applicable fire safety regulations and will bring appropriate fire safety equipment as required.</p></div>
+  </div>
+
+</div>
+
+<!-- SIGN OFF -->
+<div class="sign-off">
+  <p>By confirming your booking, you agree to these terms and conditions in full. If you have any questions before signing, please don't hesitate to reach out — we're always happy to talk things through.</p>
+  <p>Contact us at <a href="mailto:Hello@Orpi.Events">Hello@Orpi.Events</a> or via WhatsApp on <a href="https://wa.me/447424505763">+44 7424 505763</a>.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">ORPI</a>
+  <p class="footer-copy">&copy; 2026 ORPI Events Ltd. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() {
+    const links = document.querySelector('.nav-links');
+    const isOpen = links.style.display === 'flex';
+    if (isOpen) { links.style.display = 'none'; }
+    else { links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(8,8,8,0.98);padding:24px;gap:20px;border-bottom:0.5px solid rgba(255,255,255,0.08)'; }
+  });
+</script>
+</body>
+</html>
