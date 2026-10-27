@@ -86,4 +86,3 @@ or secrets.
 5. Point the Instagram bio and Google Business Profile at orpi.events, and set
    `GROWTH_FALLBACK_URL` in the orpi-app project to
    `https://orpi.events/enquire` so retired tracked links land on the new form.
-6. Confirm the Grift licence covers self-hosting on the website.
