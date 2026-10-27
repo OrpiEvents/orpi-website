@@ -311,9 +311,21 @@ button { font: inherit; color: inherit; }
 .fav-head h3 { grid-column: 1 / span 6; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.1; }
 .fav-head p { grid-column: 8 / span 5; color: var(--muted); }
 .favs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(32px, 3vw, 44px) var(--gap); }
-.fav img { width: 100%; aspect-ratio: 1; object-fit: contain; margin-bottom: 10px; }
+.fav img {
+  width: 100%; aspect-ratio: 1; object-fit: contain; margin-bottom: 10px;
+  /* Some of the library's squares have a shadow running into the edge:
+     feather the outer 5% so no square ever shows on the white page. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent), linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent), linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
+  mask-composite: intersect;
+}
 .fav h4 { font-size: clamp(20px, 1.7vw, 24px); line-height: 1.2; }
 .fav p { margin-top: 6px; color: var(--muted); }
+.fav .fav-base { margin-top: 4px; font-size: 15px; font-weight: 500; color: var(--amber-deep); }
+.favs { transition: opacity .18s; }
+.favs.is-swapping { opacity: 0; }
+.fav-more { margin-top: clamp(36px, 4vw, 56px); }
 .favs-text { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .favs-text .fav { background: var(--canvas); border-radius: var(--r-card); padding: clamp(22px, 2.4vw, 32px); }
 @media (max-width: 899px) {

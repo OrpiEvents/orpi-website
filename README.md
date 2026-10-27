@@ -40,11 +40,14 @@ Where things come from:
   do. If the site ever adds analytics, a Meta pixel or any cookie, the notice
   (and a cookie banner) has to change first.
 - **Drinks**: there's no full menu on the site on purpose. The homepage shows
-  a few favourites (`#drinks` in `_src/pages/index.html`): Punit's
-  illustrations for the cocktails, and text cards for the sober serves until
-  they have illustrations too. Illustrations live in
-  `assets/brand/illustrations` (480×480, white background). `/menu` redirects
-  to the favourites.
+  four cocktails and four sober serves at random, live from the Drinks Library
+  in Notion: `assets/js/drinks.js` reads the booking app's public feed
+  (`https://book.orpi.events/api/public/drinks`), which lists every approved
+  cocktail and mocktail with its illustration, and gets small copies of the
+  pictures through the booking app's `/_next/image`. Anything approved in
+  Notion turns up within about ten minutes. Names come straight from Notion,
+  so fix a typo there. If the feed can't be reached, the drinks written into
+  `#drinks` in `_src/pages/index.html` stay. `/menu` redirects to them.
 - **Photos and brand files** are in `assets/img` and `assets/brand`. If you
   replace an image, give it a new file name: browsers keep images for a week.
   CSS and JS changes show straight away (the build stamps each link with the

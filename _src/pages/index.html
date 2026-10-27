@@ -6,7 +6,7 @@
   "nav": "home",
   "ld": ["business", "faq"],
   "preload": "\n<link rel=\"preload\" href=\"/assets/brand/textures/fractual-glass.webp\" as=\"image\" type=\"image/webp\">",
-  "scripts": ["site.js"]
+  "scripts": ["site.js", "drinks.js"]
 } -->
 
 <section class="hero">
@@ -170,7 +170,7 @@
   </div>
 </section>
 
-<section class="section snow drinks" id="drinks">
+<section class="section snow drinks" id="drinks" data-api="https://book.orpi.events">
   <div class="wrap">
     <div class="dr-head">
       <h2 class="h2">A few of our favourites</h2>
@@ -180,23 +180,29 @@
       </div>
     </div>
 
+    <!-- drinks.js swaps these for a random few from the Drinks Library in
+         Notion (via the booking app). If that can't be reached, these stay. -->
     <div class="fav-group">
       <div class="fav-head"><h3>Cocktails</h3></div>
-      <ul class="favs">
-        <li class="fav"><img src="/assets/brand/illustrations/espresso-martini.webp" width="480" height="480" alt="" loading="lazy"><h4>Espresso Martini</h4><p>Fresh espresso and velvety vodka. Rich, smooth and undeniably indulgent.</p></li>
-        <li class="fav"><img src="/assets/brand/illustrations/negroni.webp" width="480" height="480" alt="" loading="lazy"><h4>Negroni</h4><p>Bold, bitter and beautifully complex, with a long, lingering finish.</p></li>
-        <li class="fav"><img src="/assets/brand/illustrations/aperol-spritz.webp" width="480" height="480" alt="" loading="lazy"><h4>Aperol Spritz</h4><p>Aperol, prosecco and soda over ice, with a slice of orange.</p></li>
-        <li class="fav"><img src="/assets/brand/illustrations/hugo-spritz.webp" width="480" height="480" alt="" loading="lazy"><h4>Hugo Spritz</h4><p>Elderflower, prosecco, fresh mint and lime. Light and floral.</p></li>
+      <ul class="favs" id="favs-cocktail">
+        <li class="fav"><img src="/assets/brand/illustrations/espresso-martini.webp" width="480" height="480" alt="" loading="lazy"><h4>Espresso Martini</h4><p class="fav-base">Vodka</p></li>
+        <li class="fav"><img src="/assets/brand/illustrations/negroni.webp" width="480" height="480" alt="" loading="lazy"><h4>Negroni</h4><p class="fav-base">Gin</p></li>
+        <li class="fav"><img src="/assets/brand/illustrations/aperol-spritz.webp" width="480" height="480" alt="" loading="lazy"><h4>Aperol Spritz</h4><p class="fav-base">Liqueur</p></li>
+        <li class="fav"><img src="/assets/brand/illustrations/hugo-spritz.webp" width="480" height="480" alt="" loading="lazy"><h4>Hugo Spritz</h4><p class="fav-base">Liqueur</p></li>
       </ul>
     </div>
 
     <div class="fav-group">
       <div class="fav-head"><h3>Sober serves</h3><p>Alcohol-free, and made with exactly the same care as our cocktails.</p></div>
-      <ul class="favs favs-text">
+      <ul class="favs favs-text" id="favs-sober">
         <li class="fav"><h4>Lychee Spritz</h4><p>Fragrant lychee and gentle citrus, lightly sparkling. Delicate, floral and easy-drinking.</p></li>
-        <li class="fav"><h4>Mango Tang</h4><p>Sweet mango cut through with sharp lime and a slow-building spice. Bold and tropical.</p></li>
         <li class="fav"><h4>Spiced Mango</h4><p>Sweet mango meets fiery chilli heat. Bold, punchy and full of flavour.</p></li>
+        <li class="fav"><h4>Passionfruit Fizz</h4><p>Bright passionfruit and zesty lime with a light fizz. Vibrant, tangy and tropical.</p></li>
       </ul>
+    </div>
+
+    <div class="fav-more" id="fav-more" hidden>
+      <button class="btn btn-outline" type="button" id="fav-shuffle">Shuffle the drinks</button>
     </div>
 
     <div class="partners">
