@@ -22,6 +22,14 @@ WHATSAPP = 'https://wa.me/447424505763?text=Hi%20ORPI%2C%20I%E2%80%99d%20like%20
 EMAIL = 'hello@orpi.events'
 INSTAGRAM = 'https://www.instagram.com/orpi.events/'
 
+# UK company law says a company's website must show its registered name, where
+# it's registered, its number and its registered office. This small print at
+# the foot of every page is the only place Ilford appears on the site
+# (Ruds, 27 Oct 2026); anywhere else a place is needed, say London. The ops
+# app keeps the same details in lib/company.js.
+LEGAL_LINE = ('ORPI Events Ltd, registered in England and Wales, company&nbsp;no.&nbsp;16506098. '
+              'Registered office: Unit 5 Clements Court, Clements Lane, Ilford IG1&nbsp;2QY.')
+
 
 def paths(svg_file):
     return re.findall(r'<path d="([^"]+)"', (ROOT / 'assets' / 'brand' / svg_file).read_text())
@@ -127,6 +135,7 @@ def footer():
       <span><span class="copy">©</span> 2026 ORPI Events Ltd</span>
       <span>Mobile bars across London and England.</span>
     </div>
+    <p class="footer-legal">{LEGAL_LINE}</p>
   </div>
 </footer>'''
 

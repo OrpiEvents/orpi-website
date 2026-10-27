@@ -32,7 +32,10 @@ Push a branch and Vercel gives it a preview address
 to open it). **`main` is the live site.**
 
 House rule: never write Ilford or East London anywhere on the site. Where a place
-is needed, say London.
+is needed, say London. The one exception is the legal small print at the foot of
+every page (registered name, England and Wales, company no. 16506098 and the
+registered office), which UK company law requires on a company's website. It's
+set once, as `LEGAL_LINE` in `_src/build.py`.
 
 Where things come from:
 

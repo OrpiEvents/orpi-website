@@ -460,6 +460,8 @@ button { font: inherit; color: inherit; }
 /* Grift draws © as a superscript; the system face reads properly at this size. */
 .footer-base .copy { font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; }
 .footer-base { margin-top: clamp(56px, 6vw, 88px); padding-top: 22px; border-top: 1px solid var(--dark-line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--on-dark-3); }
+/* The legal small print (registered name, number and office). */
+.footer-legal { margin-top: 14px; font-size: 12.5px; line-height: 1.55; color: var(--on-dark-3); }
 @media (max-width: 899px) {
   .footer-brand { grid-column: 1 / -1; }
   .footer-col, .footer-col:first-of-type { grid-column: span 4; }
