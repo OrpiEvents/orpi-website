@@ -304,7 +304,7 @@ button { font: inherit; color: inherit; }
 .dr-head h2 { grid-column: 1 / span 7; }
 .dr-head .dr-copy { grid-column: 9 / span 4; }
 .dr-head .lead { margin-bottom: 24px; }
-/* Favourites: Punit's illustrations for the cocktails; the mocktails sit on
+/* Favourites: Punit's illustrations for the cocktails; the sober serves sit on
    flat Canvas cards until they have illustrations of their own. */
 .fav-group { margin-top: clamp(56px, 7vw, 104px); }
 .fav-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 10px; align-items: end; padding-bottom: 18px; margin-bottom: clamp(24px, 3vw, 40px); border-bottom: 1px solid var(--line); }
