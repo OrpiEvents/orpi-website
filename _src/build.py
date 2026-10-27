@@ -125,7 +125,7 @@ def footer():
     </div>
     <div class="footer-base">
       <span><span class="copy">©</span> 2026 ORPI Events Ltd</span>
-      <span>Based in Ilford, East London. Bars across England.</span>
+      <span>Mobile bars across London and England.</span>
     </div>
   </div>
 </footer>'''
@@ -192,7 +192,7 @@ BUSINESS = {
     'email': EMAIL,
     'telephone': '+447424505763',
     'foundingDate': '2025-07',
-    'address': {'@type': 'PostalAddress', 'addressLocality': 'Ilford', 'addressRegion': 'Greater London', 'addressCountry': 'GB'},
+    'address': {'@type': 'PostalAddress', 'addressRegion': 'London', 'addressCountry': 'GB'},
     'areaServed': {'@type': 'AdministrativeArea', 'name': 'England'},
     'sameAs': [INSTAGRAM],
 }

@@ -31,6 +31,9 @@ Push a branch and Vercel gives it a preview address
 (`orpi-website-git-<branch>-orpievents-projects.vercel.app`, sign in to Vercel
 to open it). **`main` is the live site.**
 
+House rule: never write Ilford or East London anywhere on the site. Where a place
+is needed, say London.
+
 Where things come from:
 
 - **Terms** are a copy of the terms clients sign in the ops app
