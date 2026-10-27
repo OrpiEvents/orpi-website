@@ -41,7 +41,7 @@ Where things come from:
   (and a cookie banner) has to change first.
 - **Drinks**: there's no full menu on the site on purpose. The homepage shows
   a few favourites (`#drinks` in `_src/pages/index.html`): Punit's
-  illustrations for the cocktails, and text cards for the sober serves until
+  illustrations for the cocktails, and text cards for the mocktails until
   they have illustrations too. Illustrations live in
   `assets/brand/illustrations` (480×480, white background). `/menu` redirects
   to the favourites.
