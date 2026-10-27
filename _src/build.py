@@ -6,8 +6,7 @@ to the nav or footer is made once. Run from the repo root:
 
     python3 _src/build.py
 
-It writes index.html, menu.html, enquire.html, terms.html, privacy.html and
-404.html into the repo root. Vercel serves those files as they are (no build
+It writes index.html, enquire.html, terms.html, privacy.html and 404.html into the repo root. Vercel serves those files as they are (no build
 step on Vercel). Edit the pages in _src/pages, not the generated files.
 """
 import hashlib
@@ -46,7 +45,7 @@ CHAT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 
 NAV_ITEMS = [
     ('packages', '/#packages', 'Packages'),
-    ('menu', '/menu', 'Menu'),
+    ('drinks', '/#drinks', 'Drinks'),
     ('app', '/#app', 'The app'),
     ('reviews', '/#reviews', 'Reviews'),
     ('faq', '/#faq', 'FAQ'),
@@ -95,13 +94,12 @@ def footer():
     <div class="footer-top">
       <div class="footer-brand">
         <a href="/" aria-label="ORPI Events home" style="color:inherit">{wordmark(label=None)}</a>
-        <p>Punjabi for “drink more”.</p>
       </div>
       <div class="footer-col">
         <h2>Explore</h2>
         <ul>
           <li><a href="/#packages">Packages</a></li>
-          <li><a href="/menu">Menu</a></li>
+          <li><a href="/#drinks">Drinks</a></li>
           <li><a href="/#app">The app</a></li>
           <li><a href="/#reviews">Reviews</a></li>
           <li><a href="/#faq">FAQ</a></li>

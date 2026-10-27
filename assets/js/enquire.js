@@ -97,29 +97,6 @@
   var ev = params.get('event');
   if (ev && EVENT_TYPES.indexOf(ev) !== -1) $('f-type').value = ev;
 
-  // ── Drinks shortlisted on the menu page ──
-  var shortlist = [];
-  try { shortlist = JSON.parse(sessionStorage.getItem('orpi-shortlist') || '[]'); } catch (e) { shortlist = []; }
-  if (!Array.isArray(shortlist)) shortlist = [];
-  function drawShortlist() {
-    var box = $('eq-shortlist'), ul = $('eq-sl-list');
-    ul.innerHTML = '';
-    shortlist.forEach(function (name, i) {
-      var li = document.createElement('li');
-      var t = document.createElement('span'); t.textContent = name;
-      var b = document.createElement('button');
-      b.type = 'button'; b.setAttribute('aria-label', 'Remove ' + name); b.innerHTML = '&times;';
-      b.addEventListener('click', function () {
-        shortlist.splice(i, 1);
-        try { sessionStorage.setItem('orpi-shortlist', JSON.stringify(shortlist)); } catch (e) {}
-        drawShortlist();
-      });
-      li.appendChild(t); li.appendChild(b); ul.appendChild(li);
-    });
-    box.hidden = shortlist.length === 0;
-  }
-  drawShortlist();
-
   // ── Submit ──
   function fail(msg, field) {
     var box = $('eq-error');
@@ -138,7 +115,6 @@
     var month = $('f-month').value, year = $('f-year').value;
     var extra = [];
     if (pkg) extra.push('Package they asked about: ' + pkg + '.');
-    if (shortlist.length) extra.push('Drinks shortlisted on the menu: ' + shortlist.join(', ') + '.');
     var notes = $('f-notes').value.trim();
     var joined = (extra.join('\n') + (extra.length && notes ? '\n\n' : '') + notes).slice(0, 1500);
     return {
@@ -198,7 +174,6 @@
     $('done-name').textContent = first ? ', ' + first : '';
     var box = $('eq-done');
     box.hidden = false;
-    try { sessionStorage.removeItem('orpi-shortlist'); } catch (e) {}
     box.focus();
     box.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
