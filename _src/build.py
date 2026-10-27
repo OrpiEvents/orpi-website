@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+"""Builds the website's HTML pages from _src/pages/*.html.
+
+Every page shares one <head>, navigation and footer, kept here so a change
+to the nav or footer is made once. Run from the repo root:
+
+    python3 _src/build.py
+
+It writes index.html, menu.html, enquire.html, terms.html, privacy.html and
+404.html into the repo root. Vercel serves those files as they are (no build
+step on Vercel). Edit the pages in _src/pages, not the generated files.
+"""
+import hashlib
+import json
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PAGES = ROOT / '_src' / 'pages'
+SITE = 'https://orpi.events'
+PORTAL = 'https://book.orpi.events/portal'
+WHATSAPP = 'https://wa.me/447424505763?text=Hi%20ORPI%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20bar%20for%20my%20event.'
+EMAIL = 'hello@orpi.events'
+INSTAGRAM = 'https://www.instagram.com/orpi.events/'
+
+
+def paths(svg_file):
+    return re.findall(r'<path d="([^"]+)"', (ROOT / 'assets' / 'brand' / svg_file).read_text())
+
+
+WORD_PATHS = ''.join(f'<path d="{d}"/>' for d in paths('wordmark.svg'))
+MONO_PATHS = ''.join(f'<path d="{d}"/>' for d in paths('monogram.svg'))
+
+
+def wordmark(cls='word', label='ORPI Events'):
+    aria = f'role="img" aria-label="{label}"' if label else 'aria-hidden="true"'
+    return f'<svg class="{cls}" viewBox="7 117 411 190" fill="currentColor" {aria}>{WORD_PATHS}</svg>'
+
+
+def monogram(cls='mono', label=None):
+    aria = f'role="img" aria-label="{label}"' if label else 'aria-hidden="true"'
+    return f'<svg class="{cls}" viewBox="7 8 411 411" fill="currentColor" {aria}>{MONO_PATHS}</svg>'
+
+
+CHAT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>'
+
+NAV_ITEMS = [
+    ('packages', '/#packages', 'Packages'),
+    ('menu', '/menu', 'Menu'),
+    ('app', '/#app', 'The app'),
+    ('reviews', '/#reviews', 'Reviews'),
+    ('faq', '/#faq', 'FAQ'),
+]
+
+
+CURRENT = ' aria-current="page"'
+
+
+def nav(current):
+    links = ''.join(
+        '<a href="{}"{}>{}</a>'.format(href, CURRENT if key == current else '', text)
+        for key, href, text in NAV_ITEMS)
+    mobile_links = ''.join(
+        '<a href="{}"{}>{}</a>'.format(href, CURRENT if key == current else '', text)
+        for key, href, text in [('home', '/', 'Home')] + NAV_ITEMS + [('login', PORTAL, 'Client login')])
+    quote_current = CURRENT if current == 'enquire' else ''
+    return f'''<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="ORPI Events home">{monogram()}{wordmark(label=None)}</a>
+    <nav class="nav-links" aria-label="Main">{links}</nav>
+    <div class="nav-actions">
+      <a class="nav-login" href="{PORTAL}">Client login</a>
+      <a class="btn btn-primary btn-sm" href="/enquire"{quote_current}>Get a quote</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        <svg class="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">{mobile_links}</nav>
+    <div class="mm-foot">
+      <a class="btn btn-primary" href="/enquire">Get a quote</a>
+      <a class="btn btn-outline on-dark" href="{WHATSAPP}">{CHAT_ICON}WhatsApp us</a>
+      <p>Or email <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+    </div>
+  </div>
+</header>'''
+
+
+def footer():
+    return f'''<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" aria-label="ORPI Events home" style="color:inherit">{wordmark(label=None)}</a>
+        <p>Punjabi for “drink more”.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="/#packages">Packages</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/#app">The app</a></li>
+          <li><a href="/#reviews">Reviews</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Talk to us</h2>
+        <ul>
+          <li><a href="/enquire">Get a quote</a></li>
+          <li><a href="{WHATSAPP}">WhatsApp +44&nbsp;7424&nbsp;505763</a></li>
+          <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+          <li><a href="{INSTAGRAM}">Instagram @orpi.events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Booked with us?</h2>
+        <ul>
+          <li><a href="{PORTAL}">Client login</a></li>
+          <li><a href="/terms">Terms &amp; conditions</a></li>
+          <li><a href="/privacy">Privacy notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span><span class="copy">©</span> 2026 ORPI Events Ltd</span>
+      <span>Based in Ilford, East London. Bars across England.</span>
+    </div>
+  </div>
+</footer>'''
+
+
+def head(meta):
+    title = meta['title']
+    desc = meta['description']
+    url = SITE + meta['path']
+    robots = meta.get('robots', 'index, follow')
+    jsonld = meta.get('jsonld', '')
+    preload_img = meta.get('preload', '')
+    og_title = meta.get('og_title', title)
+    css = asset('css/site.css')
+    # The 404 page is served at whatever address was mistyped, so it gets no
+    # canonical address of its own.
+    canonical = f'\n<link rel="canonical" href="{url}">' if meta.get('canonical', True) else ''
+    og_url = f'\n<meta property="og:url" content="{url}">' if meta.get('canonical', True) else ''
+    return f'''<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta name="robots" content="{robots}">{canonical}
+<meta name="theme-color" content="#141115">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ORPI Events">
+<meta property="og:title" content="{og_title}">
+<meta property="og:description" content="{desc}">{og_url}
+<meta property="og:image" content="{SITE}/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/Grift-SemiBold.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/fonts/Grift-Regular.woff" as="font" type="font/woff" crossorigin>{preload_img}
+<link rel="stylesheet" href="{css}">
+<script>document.documentElement.classList.add('js')</script>{jsonld}
+</head>'''
+
+
+def asset(rel):
+    """/assets/<rel>?v=<content hash>. The hash changes whenever the file does,
+    so browsers fetch the new CSS or JS straight away even though Vercel tells
+    them to keep these files for a year (see vercel.json)."""
+    digest = hashlib.sha256((ROOT / 'assets' / rel).read_bytes()).hexdigest()[:10]
+    return f'/assets/{rel}?v={digest}'
+
+BUSINESS = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': 'ORPI Events',
+    'legalName': 'ORPI Events Ltd',
+    'url': SITE,
+    'logo': SITE + '/apple-touch-icon.png',
+    'image': SITE + '/og.jpg',
+    'description': 'Premium mobile bar for weddings, mendhis, sangeets, birthdays and corporate events across London and England.',
+    'email': EMAIL,
+    'telephone': '+447424505763',
+    'foundingDate': '2025-07',
+    'address': {'@type': 'PostalAddress', 'addressLocality': 'Ilford', 'addressRegion': 'Greater London', 'addressCountry': 'GB'},
+    'areaServed': {'@type': 'AdministrativeArea', 'name': 'England'},
+    'sameAs': [INSTAGRAM],
+}
+
+
+def strip_tags(s):
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', s)).strip()
+
+
+def faq_jsonld(body):
+    qa = re.findall(r'<summary>(.*?)<span class="pm".*?</summary>\s*<div class="faq-a">(.*?)</div>', body, re.S)
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'mainEntity': [{'@type': 'Question', 'name': strip_tags(q),
+                        'acceptedAnswer': {'@type': 'Answer', 'text': strip_tags(a)}} for q, a in qa],
+    }
+
+
+def build():
+    for src in sorted(PAGES.glob('*.html')):
+        raw = src.read_text()
+        m = re.match(r'<!--meta\s+(\{.*?\})\s*-->\s*', raw, re.S)
+        if not m:
+            raise SystemExit(f'{src.name}: missing <!--meta {{...}} --> header')
+        meta = json.loads(m.group(1))
+        body = raw[m.end():]
+        body = (body.replace('{{WHATSAPP}}', WHATSAPP)
+                    .replace('{{EMAIL}}', EMAIL)
+                    .replace('{{INSTAGRAM}}', INSTAGRAM)
+                    .replace('{{PORTAL}}', PORTAL)
+                    .replace('{{CHAT_ICON}}', CHAT_ICON)
+                    .replace('{{WORDMARK_HERO}}', wordmark('hero-word', None))
+                    .replace('{{WORDMARK}}', wordmark(label=None))
+                    .replace('{{MONOGRAM}}', monogram()))
+        blocks = []
+        if 'business' in meta.get('ld', []):
+            blocks.append(BUSINESS)
+        if 'faq' in meta.get('ld', []):
+            blocks.append(faq_jsonld(body))
+        meta['jsonld'] = ''.join(
+            '\n<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False).replace('</', '<\\/') + '</script>'
+            for b in blocks)
+        scripts = ''.join('\n<script src="{}" defer></script>'.format(asset('js/' + s)) for s in meta.get('scripts', ['site.js']))
+        html = (head(meta) + '\n<body' + (f' class="{meta["bodyClass"]}"' if meta.get('bodyClass') else '') + '>\n'
+                + nav(meta.get('nav', '')) + '\n<main id="main">\n' + body.strip() + '\n</main>\n'
+                + footer() + scripts + '\n</body>\n</html>\n')
+        out = ROOT / meta.get('out', src.name)
+        out.write_text(html)
+        print(f'built {out.relative_to(ROOT)} ({len(html) // 1024} KB)')
+
+
+if __name__ == '__main__':
+    build()

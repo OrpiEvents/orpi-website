@@ -1,0 +1,14 @@
+{
+  "name": "ORPI Events",
+  "short_name": "ORPI",
+  "description": "Premium mobile bar for weddings, mendhis and celebrations across England.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#141115",
+  "theme_color": "#141115",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
