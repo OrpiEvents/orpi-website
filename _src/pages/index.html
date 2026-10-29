@@ -17,7 +17,7 @@
       <div class="hero-copy">
         <p class="lead">A premium mobile bar for weddings, mendhis and celebrations across London and England. Signature cocktails, proper sober serves and a team that brings the energy.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="/enquire">Get a quote</a>
+          <a class="btn btn-primary" href="/enquire" data-nudge>Get a quote</a>
           <a class="btn btn-outline on-dark" href="{{WHATSAPP}}">{{CHAT_ICON}}WhatsApp us</a>
         </div>
       </div>
@@ -59,32 +59,53 @@
         <div class="occ-img"><img src="/assets/img/wedding-table-700.webp" width="700" height="1050" alt="" loading="lazy"></div>
         <h3>Wedding receptions</h3>
         <p>Welcome drinks as your guests arrive, a signature menu built around the two of you, and a bar that keeps pace with the whole family until the last song.</p>
+        <figure class="occ-rv" data-review="listed-building-wedding">
+          <blockquote><p>I received a ton of compliments from guests on both their service and drinks.</p></blockquote>
+          <figcaption class="label">Wedding at a listed building</figcaption>
+        </figure>
         <a class="link" href="/enquire?event=Wedding%20Reception">Get a quote for your wedding</a>
       </li>
       <li class="occ" data-img="1">
         <div class="occ-img"><img src="/assets/img/aperol-900.webp" width="900" height="600" alt="" loading="lazy"></div>
         <h3>Mendhi &amp; sangeet</h3>
         <p>Dry, mixed or a full bar: it’s your call. Bright sober serves that hold their own next to the cocktails.</p>
+        <figure class="occ-rv" data-review="wedding-reception">
+          <blockquote><p>The cocktails and mocktails were a HIT!</p></blockquote>
+          <figcaption class="label">Wedding reception</figcaption>
+        </figure>
         <a class="link" href="/enquire?event=Mendhi%2FSangeet">Get a quote for your mendhi</a>
       </li>
       <li class="occ" data-img="2">
         <div class="occ-img"><img src="/assets/img/espresso-700.webp" width="700" height="1050" alt="" loading="lazy"></div>
         <h3>Birthdays &amp; private parties</h3>
         <p>Garden parties, milestone birthdays and first birthdays. We bring the bar, the menu and the atmosphere, then clear it all away.</p>
+        <figure class="occ-rv" data-review="30th-garden-party">
+          <blockquote><p>The energy the team brought made the event one that our family and friends won’t forget.</p></blockquote>
+          <figcaption class="label">30th birthday garden party</figcaption>
+        </figure>
         <a class="link" href="/enquire?event=Birthday">Get a quote for your party</a>
       </li>
       <li class="occ" data-img="3">
         <div class="occ-img"><img src="/assets/img/fashion-week-700.webp" width="700" height="933" alt="" loading="lazy"></div>
         <h3>Corporate &amp; brand events</h3>
         <p>Client evenings, summer parties and launches. We’ve poured at India Fashion Week London, and we run pay bars for charity nights.</p>
+        <figure class="occ-rv" data-review="company-party">
+          <blockquote><p>They turned up big time and were my favourite supplier to work with.</p></blockquote>
+          <figcaption class="label">Company party</figcaption>
+        </figure>
         <a class="link" href="/enquire?event=Corporate">Get a quote for your event</a>
       </li>
     </ul>
-    <div class="occ-media" aria-hidden="true">
-      <img class="on" src="/assets/img/wedding-table-1200.webp" width="1200" height="1800" alt="" loading="lazy">
-      <img src="/assets/img/aperol-1600.webp" width="1600" height="1067" alt="" loading="lazy">
-      <img src="/assets/img/espresso-1200.webp" width="1200" height="1800" alt="" loading="lazy">
-      <img src="/assets/img/fashion-week-1200.webp" width="1200" height="1600" alt="" loading="lazy">
+    <!-- On a computer the photo and the review follow the row you're on;
+         site.js copies each row's review into .occ-rvs. -->
+    <div class="occ-side" aria-hidden="true">
+      <div class="occ-media">
+        <img class="on" src="/assets/img/wedding-table-1200.webp" width="1200" height="1800" alt="" loading="lazy">
+        <img src="/assets/img/aperol-1600.webp" width="1600" height="1067" alt="" loading="lazy">
+        <img src="/assets/img/espresso-1200.webp" width="1200" height="1800" alt="" loading="lazy">
+        <img src="/assets/img/fashion-week-1200.webp" width="1200" height="1600" alt="" loading="lazy">
+      </div>
+      <div class="occ-rvs"></div>
     </div>
   </div>
 </section>
@@ -104,7 +125,7 @@
           <li>Three cocktails and two mocktails of your choice, served for two hours</li>
         </ul>
         <div class="pk-spacer"></div>
-        <a class="btn btn-outline btn-sm" href="/enquire?package=Premium">Get a quote</a>
+        <a class="btn btn-outline btn-sm" href="/enquire?package=Premium" data-nudge>Get a quote</a>
       </article>
       <article class="pk big feature">
         <div class="pk-top"><h3>Ultimate</h3><span class="label">5 hours</span></div>
@@ -114,25 +135,25 @@
           <li>Three cocktails and two mocktails of your choice, all evening</li>
         </ul>
         <div class="pk-spacer"></div>
-        <a class="btn btn-primary btn-sm" href="/enquire?package=Ultimate">Get a quote</a>
+        <a class="btn btn-primary btn-sm" href="/enquire?package=Ultimate" data-nudge>Get a quote</a>
       </article>
       <article class="pk">
         <div class="pk-top"><h3>Cocktail Experience</h3><span class="label">3 hours</span></div>
         <p>A cocktail and mocktail bar: three cocktails and two mocktails of your choice, made fresh in front of your guests.</p>
         <div class="pk-spacer"></div>
-        <a class="btn btn-outline btn-sm" href="/enquire?package=Cocktail%20Experience">Get a quote</a>
+        <a class="btn btn-outline btn-sm" href="/enquire?package=Cocktail%20Experience" data-nudge>Get a quote</a>
       </article>
       <article class="pk">
         <div class="pk-top"><h3>Welcome Drinks</h3><span class="label">1 hour</span></div>
         <p>Prosecco, beer, a welcome cocktail and a welcome mocktail, poured and waiting as your guests arrive.</p>
         <div class="pk-spacer"></div>
-        <a class="btn btn-outline btn-sm" href="/enquire?package=Welcome%20Drinks">Get a quote</a>
+        <a class="btn btn-outline btn-sm" href="/enquire?package=Welcome%20Drinks" data-nudge>Get a quote</a>
       </article>
       <article class="pk">
         <div class="pk-top"><h3>Bar Only</h3><span class="label">Your alcohol</span></div>
         <p>You supply the alcohol and we bring the rest: the bar team, mixers and soft drinks, ice, garnishes and our cocktail skills.</p>
         <div class="pk-spacer"></div>
-        <a class="btn btn-outline btn-sm" href="/enquire?package=Bar%20Only">Get a quote</a>
+        <a class="btn btn-outline btn-sm" href="/enquire?package=Bar%20Only" data-nudge>Get a quote</a>
       </article>
     </div>
     <div class="pk-notes">
@@ -145,24 +166,24 @@
 <section class="section dark reviews" id="reviews">
   <div class="wrap grid">
     <h2 class="h2 rv-head">What our couples and hosts say</h2>
-    <figure class="rv-main">
+    <figure class="rv-main" data-review="listed-building-wedding">
       <blockquote><p>ORPI rescued our wedding with less than two weeks’ notice, delivering an impeccable service across a complex day of events while navigating the many special conditions and procedures of a listed building. They were professional, relaxed, brilliant with guests and really added to our day.</p></blockquote>
       <figcaption class="label">Wedding at a listed building, booked 13 days before</figcaption>
     </figure>
     <div class="rv-side">
-      <figure>
-        <blockquote><p>The cocktails and mocktails were a HIT! And a week later, people are still raving about how good it was.</p></blockquote>
+      <figure data-review="wedding-reception">
+        <blockquote><p>ORPI will always be a highlight of our reception.</p></blockquote>
         <figcaption class="label">Wedding reception</figcaption>
       </figure>
-      <figure>
-        <blockquote><p>They turned up big time and were my favourite supplier to work with. They brought more than just the drinks: they delivered the vibes we didn’t even know we needed.</p></blockquote>
+      <figure data-review="company-party">
+        <blockquote><p>They brought more than just the drinks: they delivered the vibes we didn’t even know we needed.</p></blockquote>
         <figcaption class="label">Company party</figcaption>
       </figure>
-      <figure>
-        <blockquote><p>The passionfruit martini was a firm favourite, and don’t miss out on the lychee martini with the bubble: a sure showstopper.</p></blockquote>
-        <figcaption class="label">30th birthday garden party</figcaption>
+      <figure data-review="private-party">
+        <blockquote><p>Everyone loved your guys’ services and honestly we all had a good laugh! ORPI fully came through and made the night.</p></blockquote>
+        <figcaption class="label">Private party</figcaption>
       </figure>
-      <figure>
+      <figure data-review="first-birthday">
         <blockquote><p>As a mum hosting a big first birthday, there’s always so much going on, and they even helped us with things like getting hot water to warm baby bottles.</p></blockquote>
         <figcaption class="label">First birthday</figcaption>
       </figure>
@@ -183,7 +204,13 @@
     <!-- drinks.js swaps these for a random few from the Drinks Library in
          Notion (via the booking app). If that can't be reached, these stay. -->
     <div class="fav-group">
-      <div class="fav-head"><h3>Cocktails</h3></div>
+      <div class="fav-head">
+        <h3>Cocktails</h3>
+        <figure class="rv-inline" data-review="30th-garden-party">
+          <blockquote><p>The passionfruit martini was a firm favourite, and don’t miss out on the lychee martini with the bubble: a sure showstopper.</p></blockquote>
+          <figcaption class="label">30th birthday garden party</figcaption>
+        </figure>
+      </div>
       <ul class="favs" id="favs-cocktail">
         <li class="fav"><img src="/assets/brand/illustrations/espresso-martini.webp" width="480" height="480" alt="" loading="lazy"><h4>Espresso Martini</h4><p class="fav-base">Vodka</p></li>
         <li class="fav"><img src="/assets/brand/illustrations/negroni.webp" width="480" height="480" alt="" loading="lazy"><h4>Negroni</h4><p class="fav-base">Gin</p></li>
@@ -265,7 +292,13 @@
       </div>
     </div>
     <div class="steps-wrap">
-      <h3>How booking works</h3>
+      <div class="steps-head">
+        <h3>How booking works</h3>
+        <figure class="rv-inline" data-review="private-event">
+          <blockquote><p>From the drinks to staff and service, everything was 10/10 and I didn’t have to worry about a thing.</p></blockquote>
+          <figcaption class="label">Private event</figcaption>
+        </figure>
+      </div>
       <ol class="steps">
         <li><h4>Tell us about your day</h4><p>Two minutes on our enquiry form, or a message on WhatsApp.</p></li>
         <li><h4>Get your quote</h4><p>Built around your guest numbers, venue and drinks, usually within 24 hours.</p></li>
@@ -305,7 +338,7 @@
     <h2 class="h1">Tell us about your day.</h2>
     <p class="lead">We’ll come back with a quote built around your guest list, usually within 24 hours.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="/enquire">Get a quote</a>
+      <a class="btn btn-primary" href="/enquire" data-nudge>Get a quote</a>
       <a class="btn btn-outline on-dark" href="{{WHATSAPP}}">{{CHAT_ICON}}WhatsApp us</a>
     </div>
     <p class="alt">Or email <a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>

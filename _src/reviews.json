@@ -1,0 +1,66 @@
+{
+  "_read_me": [
+    "Every review on the website comes from this file, word for word.",
+    "A review's 'text' is the client's own words as we've published them. Some have a longer and a shorter version; both are kept so a page can quote either.",
+    "A quote on a page must be an exact piece of one of these texts. _src/build.py stops the build if a quote has been reworded, if its caption isn't this review's caption or short caption, or if the same sentence appears twice on one page.",
+    "Never write, merge or tidy up a review here beyond fixing a typo. To add one, paste it in full under a new id with a caption that says what the event was (never the client's name).",
+    "'nudges' are the short lines shown by the Get a quote buttons on computers (assets/js/site.js). They're checked the same way, and can't repeat a quote already on the page."
+  ],
+  "reviews": {
+    "listed-building-wedding": {
+      "caption": "Wedding at a listed building, booked 13 days before",
+      "short": "Wedding at a listed building",
+      "text": [
+        "ORPI rescued our wedding with less than two weeks’ notice, delivering an impeccable service across a complex day of events while navigating the many special conditions and procedures of a listed building. They were professional, relaxed, brilliant with guests and really added to our day.",
+        "ORPI rescued our wedding with less than 2 weeks’ notice, delivering an impeccable service across a complex day at a listed building. Professional, relaxed, brilliant with guests — I received a ton of compliments from guests on both their service and drinks.",
+        "ORPI stepped in with 13 days to go. They organised a drinks tasting at our flat within days, sourced all necessary glassware, served signature cocktails all night, and even served drinks to the dinner table — going above and beyond at every turn. I wholeheartedly recommend ORPI for delivering to the highest standards."
+      ]
+    },
+    "wedding-reception": {
+      "caption": "Wedding reception",
+      "text": [
+        "The cocktails and mocktails were a HIT! A week later, people are still raving about how good it was. ORPI will always be a highlight of our reception.",
+        "The cocktails and mocktails were a HIT! And a week later, people are still raving about how good it was."
+      ]
+    },
+    "private-event": {
+      "caption": "Private event",
+      "text": [
+        "From the drinks to staff and service, everything was 10/10 and I didn’t have to worry about a thing. They really made my event special."
+      ]
+    },
+    "30th-garden-party": {
+      "caption": "30th birthday garden party",
+      "text": [
+        "Both service and drinks were 10/10. The energy the team brought made the event one that our family and friends won’t forget. The passionfruit martini was a firm favourite.",
+        "The passionfruit martini was a firm favourite, and don’t miss out on the lychee martini with the bubble: a sure showstopper."
+      ]
+    },
+    "company-party": {
+      "caption": "Company party",
+      "text": [
+        "They turned up big time and were my favourite supplier to work with. They delivered the vibes we didn’t even know we needed. Now I understand what a bar company brings to the party.",
+        "They turned up big time and were my favourite supplier to work with. They brought more than just the drinks: they delivered the vibes we didn’t even know we needed."
+      ]
+    },
+    "first-birthday": {
+      "caption": "First birthday",
+      "text": [
+        "Ruds and his team were so friendly and incredibly accommodating. As a mum hosting a big first birthday, there’s always so much going on — they even helped warm baby bottles. Those small acts of kindness made such a difference.",
+        "As a mum hosting a big first birthday, there’s always so much going on, and they even helped us with things like getting hot water to warm baby bottles."
+      ]
+    },
+    "private-party": {
+      "caption": "Private party",
+      "text": [
+        "Everyone loved your guys’ services and honestly we all had a good laugh! ORPI fully came through and made the night."
+      ]
+    }
+  },
+  "nudges": [
+    { "review": "private-event", "quote": "They really made my event special." },
+    { "review": "listed-building-wedding", "quote": "I wholeheartedly recommend ORPI for delivering to the highest standards." },
+    { "review": "30th-garden-party", "quote": "Both service and drinks were 10/10." },
+    { "review": "company-party", "quote": "Now I understand what a bar company brings to the party." }
+  ]
+}

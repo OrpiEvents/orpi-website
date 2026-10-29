@@ -231,13 +231,25 @@ button { font: inherit; color: inherit; }
 .occ p { color: var(--muted); max-width: 34em; }
 .occ .link { width: fit-content; }
 .occ-img { display: none; }
-.occ-media { grid-column: 9 / span 4; position: sticky; top: calc(var(--nav-h) + 28px); align-self: start; aspect-ratio: 4 / 5; overflow: hidden; background: var(--mist); }
+.occ .occ-rv { margin: 6px 0 4px; }
+.occ-side { grid-column: 9 / span 4; position: sticky; top: calc(var(--nav-h) + 28px); align-self: start; }
+.occ-media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--mist); }
 .occ-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
 .occ-media img.on { opacity: 1; }
+/* The review for the row you're on, pinned over the photo's lower corner and
+   reaching into the space beside it, so it reads as a note on the row rather
+   than a caption for the photo. site.js copies each row's review in. */
+.occ-rvs { position: absolute; left: calc(-1 * var(--gap) - 24px); right: 24px; bottom: 24px; display: grid; }
+.occ-rvs .occ-rv { grid-area: 1 / 1; align-self: end; background: var(--snow); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 16px; opacity: 0; transition: opacity .5s ease; }
+.occ-rvs .occ-rv.on { opacity: 1; }
 .js .occ-list .occ:not(.on) h3 { color: var(--muted); }
+@media (min-width: 900px) {
+  /* With the card beside the photo, each row's own copy is for screen readers. */
+  .js .occ .occ-rv { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+}
 @media (max-width: 899px) {
   .occ-head, .occ-list { grid-column: 1 / -1; }
-  .occ-media { display: none; }
+  .occ-side { display: none; }
   .occ-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--mist); margin-bottom: 8px; }
   .occ-img img { width: 100%; height: 100%; object-fit: cover; }
   .js .occ-list .occ:not(.on) h3 { color: var(--stout); }
@@ -299,6 +311,39 @@ button { font: inherit; color: inherit; }
   .rv-side { margin-top: 48px; }
 }
 
+/* ── A client's words, beside what they're about ───────── */
+/* Reviews placed through the page where they match what's being read: each
+   occasion, the cocktails, how booking works, the enquiry form. They come
+   from _src/reviews.json and the build checks them word for word. The words
+   are set in Medium with an opening quote hung in the margin; the caption is
+   the quiet amber label, as in the reviews section. */
+.occ-rv, .rv-inline { display: grid; gap: 8px; align-content: end; }
+.occ-rv blockquote p, .rv-inline blockquote p { font-weight: 500; color: var(--stout); text-indent: -.4em; }
+.occ-rv blockquote p { font-size: 17px; line-height: 1.45; }
+.rv-inline blockquote p { font-size: clamp(18px, 1.45vw, 20px); line-height: 1.42; }
+.occ-rv blockquote p::before, .rv-inline blockquote p::before, .nudge-q::before { content: '“'; }
+.occ-rv blockquote p::after, .rv-inline blockquote p::after, .nudge-q::after { content: '”'; }
+.occ-rv .label, .rv-inline .label { font-size: 14.5px; }
+.dark .rv-inline blockquote p { color: #fff; }
+
+/* A short review by a Get a quote button, on computers only (site.js), for
+   the moment someone's deciding. It's a real overlay, so it's the one place a
+   review casts a shadow. It takes the opposite colour to what's under it. */
+.nudge {
+  position: fixed; z-index: 70; width: max-content; max-width: min(300px, calc(100vw - 32px));
+  padding: 14px 17px 13px; border-radius: 14px;
+  background: var(--stout); color: #fff;
+  box-shadow: 0 18px 44px rgba(20, 17, 21, .24);
+  opacity: 0; transform: translateY(5px); transition: opacity .16s ease, transform .16s ease;
+}
+.nudge.below { transform: translateY(-5px); }
+.nudge.on { opacity: 1; transform: none; }
+.nudge.light { background: var(--snow); color: var(--stout); box-shadow: 0 18px 44px rgba(0, 0, 0, .34); }
+.nudge-q { font-size: 15.5px; font-weight: 500; line-height: 1.4; text-indent: -.4em; }
+.nudge-by { margin-top: 6px; font-size: 13.5px; font-weight: 500; line-height: 1.3; color: var(--amber); }
+.nudge.light .nudge-by { color: var(--amber-deep); }
+@media (prefers-reduced-motion: reduce) { .nudge, .nudge.below { transform: none; transition: opacity .1s linear; } }
+
 /* ── Drinks ─────────────────────────────────────────────── */
 .dr-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 24px; align-items: end; }
 .dr-head h2 { grid-column: 1 / span 7; }
@@ -309,7 +354,8 @@ button { font: inherit; color: inherit; }
 .fav-group { margin-top: clamp(56px, 7vw, 104px); }
 .fav-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 10px; align-items: end; padding-bottom: 18px; margin-bottom: clamp(24px, 3vw, 40px); border-bottom: 1px solid var(--line); }
 .fav-head h3 { grid-column: 1 / span 6; font-size: clamp(26px, 2.6vw, 38px); line-height: 1.1; }
-.fav-head p { grid-column: 8 / span 5; color: var(--muted); }
+.fav-head > p, .fav-head .rv-inline { grid-column: 8 / span 5; }
+.fav-head > p { color: var(--muted); }
 .favs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(32px, 3vw, 44px) var(--gap); }
 .fav img {
   width: 100%; aspect-ratio: 1; object-fit: contain; margin-bottom: 10px;
@@ -330,7 +376,7 @@ button { font: inherit; color: inherit; }
 .favs-text .fav { background: var(--canvas); border-radius: var(--r-card); padding: clamp(22px, 2.4vw, 32px); }
 @media (max-width: 899px) {
   .dr-head h2, .dr-head .dr-copy { grid-column: 1 / -1; }
-  .fav-head h3, .fav-head p { grid-column: 1 / -1; }
+  .fav-head h3, .fav-head > p, .fav-head .rv-inline { grid-column: 1 / -1; }
   .favs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .favs-text { grid-template-columns: 1fr; }
 }
@@ -362,7 +408,10 @@ button { font: inherit; color: inherit; }
 @media (max-width: 479px) { .app-feats { grid-template-columns: 1fr; } }
 
 .steps-wrap { margin-top: clamp(80px, 9vw, 140px); padding-top: clamp(40px, 4.4vw, 64px); border-top: 1px solid var(--dark-line); }
-.steps-wrap h3 { font-size: clamp(28px, 3vw, 44px); margin-bottom: clamp(32px, 4vw, 52px); }
+.steps-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 22px; align-items: end; margin-bottom: clamp(36px, 4.4vw, 60px); }
+.steps-head h3 { grid-column: 1 / span 6; font-size: clamp(28px, 3vw, 44px); }
+.steps-head .rv-inline { grid-column: 8 / span 5; }
+@media (max-width: 899px) { .steps-head h3, .steps-head .rv-inline { grid-column: 1 / -1; } }
 .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap); counter-reset: step; }
 .steps li { counter-increment: step; display: grid; gap: 8px; align-content: start; }
 .steps li::before { content: counter(step); font-size: 44px; font-weight: 600; line-height: 1; color: var(--amber); margin-bottom: 10px; }
@@ -536,6 +585,7 @@ button { font: inherit; color: inherit; }
 .eq-next li::before { content: counter(n); position: absolute; left: 0; top: 13px; font-size: 22px; font-weight: 600; line-height: 1.2; color: var(--amber-deep); }
 .eq-next h3 { font-size: 17px; line-height: 1.35; }
 .eq-next p { color: var(--muted); font-size: 16px; }
+.eq-rv { margin-top: 30px; }
 .eq-talk { margin-top: 32px; display: grid; gap: 14px; justify-items: start; }
 .eq-talk p { color: var(--muted); }
 .eq-card { grid-column: 6 / span 7; align-self: start; background: var(--snow); border: 1px solid var(--line); border-radius: var(--r-card); padding: clamp(22px, 3vw, 44px); }

@@ -54,6 +54,27 @@ Where things come from:
   Notion turns up within about ten minutes. Names come straight from Notion,
   so fix a typo there. If the feed can't be reached, the drinks written into
   `#drinks` in `_src/pages/index.html` stay. `/menu` redirects to them.
+- **Reviews** are real clients' words, kept in `_src/reviews.json` (Ruds,
+  29 Oct 2026: reviews where they match what the visitor is reading, and by
+  the buttons people hover before they enquire). A page shows one as
+  `<figure data-review="<id>">` with the quote in a `<blockquote>` and the
+  caption in a `<figcaption>`. The build checks every one: a quote can be
+  shortened but never reworded, the caption must be that review's, and the
+  same sentence can't appear twice on a page. Where they are now:
+  - each occasion has its own review: on a computer it sits beside the photo
+    and changes with the row you're on; on a phone it's in the row, just
+    above its Get a quote link. Mendhi & sangeet borrows a wedding reception
+    review (about the mocktails) until there's a mendhi or sangeet one;
+  - the cocktails, How booking works and the enquiry page each have one;
+  - "What our couples and hosts say" has the rest;
+  - on a computer, resting the mouse on a Get a quote button (the bar at the
+    top, the hero, each package and the closing section) shows one short
+    line above it: the `nudges` in `reviews.json`, which can't repeat a quote
+    already on the page. It also shows on keyboard focus, Esc closes it, and
+    phones don't get it.
+  To add a review, paste it in full under a new id in `reviews.json` with a
+  caption that says what the event was (never the client's name), then
+  quote from it on the page.
 - **Photos and brand files** are in `assets/img` and `assets/brand`. If you
   replace an image, give it a new file name: browsers keep images for a week.
   CSS and JS changes show straight away (the build stamps each link with the

@@ -78,7 +78,7 @@ def nav(current):
     <nav class="nav-links" aria-label="Main">{links}</nav>
     <div class="nav-actions">
       <a class="nav-login" href="{PORTAL}">Client login</a>
-      <a class="btn btn-primary btn-sm" href="/enquire"{quote_current}>Get a quote</a>
+      <a class="btn btn-primary btn-sm" href="/enquire"{quote_current} data-nudge>Get a quote</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
         <svg class="close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
@@ -211,6 +211,73 @@ def strip_tags(s):
     return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', '', s)).strip()
 
 
+# ── Reviews ──────────────────────────────────────────────────
+# Every review on the site is a real client's words, kept in _src/reviews.json.
+# A page shows one as <figure data-review="<id>"> with the quote in a
+# <blockquote> and the caption in a <figcaption>. The build checks each one, so
+# a quote can be shortened but never reworded, and the same words never appear
+# twice on a page (Ruds, 29 Oct 2026: reviews placed where they match what
+# the visitor is reading, and by the Get a quote buttons).
+REVIEWS = json.loads((ROOT / '_src' / 'reviews.json').read_text())
+
+
+def plain(s):
+    """Text without tags, entities or curly quotes, for comparing words."""
+    s = strip_tags(s).replace('&amp;', '&').replace('&nbsp;', ' ')
+    for a, b in (('’', "'"), ('‘', "'"), ('“', '"'), ('”', '"'), ('—', '-'), ('–', '-')):
+        s = s.replace(a, b)
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+def sentences(text):
+    return [x for x in re.split(r'(?<=[.!?])\s+', plain(text)) if x]
+
+
+def is_from(review_id, quote):
+    review = REVIEWS['reviews'].get(review_id)
+    return bool(review) and any(plain(quote) in plain(t) for t in review['text'])
+
+
+def check_reviews(page, body):
+    """The page's review quotes, after checking each against reviews.json."""
+    quotes = []
+    for attrs, inner in re.findall(r'<figure([^>]*\bdata-review="[^"]*"[^>]*)>(.*?)</figure>', body, re.S):
+        rid = re.search(r'data-review="([^"]*)"', attrs).group(1)
+        review = REVIEWS['reviews'].get(rid)
+        if not review:
+            raise SystemExit(f'{page}: there is no review "{rid}" in _src/reviews.json')
+        q = re.search(r'<blockquote>(.*?)</blockquote>', inner, re.S)
+        quote = plain(q.group(1)) if q else ''
+        if not quote or not is_from(rid, quote):
+            raise SystemExit(f'{page}: this "{rid}" quote isn\'t word for word from _src/reviews.json:\n  {quote}')
+        c = re.search(r'<figcaption[^>]*>(.*?)</figcaption>', inner, re.S)
+        caption = plain(c.group(1)) if c else ''
+        allowed = list(dict.fromkeys([review['caption'], review.get('short', review['caption'])]))
+        if caption not in [plain(a) for a in allowed]:
+            raise SystemExit(f'{page}: the "{rid}" review\'s caption should be ' + ' or '.join(f'"{a}"' for a in allowed) + f', not "{caption}"')
+        quotes.append(quote)
+    said = [s for q in quotes for s in sentences(q)]
+    twice = sorted({s for s in said if said.count(s) > 1})
+    if twice:
+        raise SystemExit(f'{page}: the same review words appear twice on the page:\n  ' + '\n  '.join(twice))
+    return said
+
+
+def nudges(page, said):
+    """The short reviews site.js shows by the Get a quote buttons, as a JSON
+    block for the page. None of them may repeat a quote already on it."""
+    pool = []
+    for n in REVIEWS['nudges']:
+        review = REVIEWS['reviews'].get(n['review'])
+        if not review or not is_from(n['review'], n['quote']):
+            raise SystemExit(f'reviews.json: the nudge "{n["quote"]}" isn\'t word for word from review "{n["review"]}"')
+        if any(s in said for s in sentences(n['quote'])):
+            raise SystemExit(f'{page}: the nudge "{n["quote"]}" is already quoted on the page; pick another')
+        pool.append({'q': n['quote'], 'by': review.get('short', review['caption'])})
+    data = json.dumps(pool, ensure_ascii=False).replace('</', '<\\/')
+    return f'\n<script type="application/json" id="rv-nudges">{data}</script>'
+
+
 def faq_jsonld(body):
     qa = re.findall(r'<summary>(.*?)<span class="pm".*?</summary>\s*<div class="faq-a">(.*?)</div>', body, re.S)
     return {
@@ -245,10 +312,13 @@ def build():
         meta['jsonld'] = ''.join(
             '\n<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False).replace('</', '<\\/') + '</script>'
             for b in blocks)
+        said = check_reviews(src.name, body)
         scripts = ''.join('\n<script src="{}" defer></script>'.format(asset('js/' + s)) for s in meta.get('scripts', ['site.js']))
+        page = (nav(meta.get('nav', '')) + '\n<main id="main">\n' + body.strip() + '\n</main>\n' + footer())
+        if 'data-nudge' in page:
+            scripts = nudges(src.name, said) + scripts
         html = (head(meta) + '\n<body' + (f' class="{meta["bodyClass"]}"' if meta.get('bodyClass') else '') + '>\n'
-                + nav(meta.get('nav', '')) + '\n<main id="main">\n' + body.strip() + '\n</main>\n'
-                + footer() + scripts + '\n</body>\n</html>\n')
+                + page + scripts + '\n</body>\n</html>\n')
         out = ROOT / meta.get('out', src.name)
         out.write_text(html)
         print(f'built {out.relative_to(ROOT)} ({len(html) // 1024} KB)')
