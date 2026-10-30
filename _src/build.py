@@ -197,7 +197,7 @@ BUSINESS = {
     'url': SITE,
     'logo': SITE + '/apple-touch-icon.png',
     'image': SITE + '/og.jpg',
-    'description': 'Premium mobile bar for weddings, mehndis, sangeets, birthdays and corporate events across London and England.',
+    'description': 'Premium mobile bar for weddings, mendhis, sangeets, birthdays and corporate events across London and England.',
     'email': EMAIL,
     'telephone': '+447424505763',
     'foundingDate': '2025-07',
