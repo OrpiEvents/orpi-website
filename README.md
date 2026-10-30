@@ -63,9 +63,9 @@ Where things come from:
   same sentence can't appear twice on a page. Where they are now:
   - each occasion has its own review: on a computer it sits beside the photo
     and changes with the row you're on; on a phone it's in the row, just
-    above its Get a quote link. Mendhi & sangeet borrows a wedding reception
-    review (about the mocktails) until there's a mendhi or sangeet one;
-  - the cocktails, How booking works and the enquiry page each have one;
+    above its Get a quote link;
+  - the packages (under the cards), the cocktails, How booking works and the
+    enquiry page each have one;
   - "What our couples and hosts say" has the rest;
   - on a computer, resting the mouse on a Get a quote button (the bar at the
     top, the hero, each package and the closing section) shows one short

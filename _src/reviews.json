@@ -1,9 +1,10 @@
 {
   "_read_me": [
     "Every review on the website comes from this file, word for word.",
-    "A review's 'text' is the client's own words as we've published them. Some have a longer and a shorter version; both are kept so a page can quote either.",
+    "A review's 'text' is the client's own words as we've published them or as they sent them to us. Some have a longer and a shorter version; both are kept so a page can quote either.",
     "A quote on a page must be an exact piece of one of these texts. _src/build.py stops the build if a quote has been reworded, if its caption isn't this review's caption or short caption, or if the same sentence appears twice on one page.",
     "Never write, merge or tidy up a review here beyond fixing a typo. To add one, paste it in full under a new id with a caption that says what the event was (never the client's name).",
+    "Some are thank-you messages clients sent us rather than public reviews. They're quoted without names, and a sentence that names a guest is left out of one (wedding-23rd).",
     "'nudges' are the short lines shown by the Get a quote buttons on computers (assets/js/site.js). They're checked the same way, and can't repeat a quote already on the page."
   ],
   "reviews": {
@@ -55,12 +56,83 @@
       "text": [
         "Everyone loved your guys’ services and honestly we all had a good laugh! ORPI fully came through and made the night."
       ]
+    },
+    "21st-birthday": {
+      "caption": "21st birthday",
+      "text": [
+        "ORPI were exceptional from start to finish. We hired them for our daughter’s 21st birthday and, about a month before, attended a cocktail tasting session—which proved invaluable. Rudhra (the owner) guided us expertly through their creative twists on classic cocktails, helping us select five cocktails and two mocktails, alongside a full range of premium spirits and soft drinks. The team also worked closely with our daughter to design a bespoke cocktail menu, which was a lovely touch. On the day, everything ran seamlessly: the setup was punctual, professional, and completely stress-free. We began with prosecco, beer, and soft drinks before quickly moving on to cocktails. Our favourites were the spicy margarita and pineapple daiquiri though all the drinks were lovely and a hit with guests. The three bartenders were outstanding—efficient, friendly, and engaging throughout the evening. The team handled everything from setup to cleanup, including managing quantities, presentation, and service with real precision. The addition of dry ice and a bubble gun were a lovely addition. Overall, they made the evening truly special. The service was slick, the pricing excellent (we went for unlimited drinks for 5 hours) and we didn’t have to worry about a single detail. I would highly recommend them—you won’t be disappointed!"
+      ]
+    },
+    "birthday-and-mendhi": {
+      "caption": "Birthday and mendhi night",
+      "text": [
+        "We recently used Orpi Events for the bar service at my partner’s birthday and my brother’s mendhi night, and they were amazing from start to finish. The team was so friendly, professional, and welcoming, which really added to the atmosphere of both events. The service was organised, smooth, and efficient all evening, and the drinks were done perfectly with great attention to detail. So many of our guests commented on how lovely and approachable the staff were. They helped create such a fun and stress-free experience for us. Would highly recommend Orpi Events to anyone looking for reliable, high-quality bar service for special occasions and celebrations. Thank you again for being such a big part of making both events memorable!"
+      ]
+    },
+    "mendhi-night": {
+      "caption": "Mendhi night",
+      "text": [
+        "We hired Orpi Events for my Mendhi night, and it was genuinely one of the best decisions we made for the celebration. From the moment they arrived, the energy, professionalism, and attention to detail from the entire team was unmatched. A huge thank you to Snehal & the Orpi team for making the night so special and unforgettable. The drinks were great all evening, the service was seamless, and every single member of the team brought the vibes and was so accommodating with our guests. They didn’t just provide a bar service, they added to the whole atmosphere of the night. Couldn’t recommend Orpi Events more highly for any celebration, they truly helped create memories we’ll cherish forever!"
+      ]
+    },
+    "savoy-wedding": {
+      "caption": "Wedding reception at The Savoy",
+      "text": [
+        "We hired ORPI for our wedding reception at The Savoy, and they were absolutely fantastic! We can't thank them enough! Right from the start, they were so friendly and easy to work with. Rudhra and Snehal hosted a pre-event cocktail tasting at our house for six of us, which ended up being one of the most fun and memorable nights—we knew right then that we’d chosen the right team! On the day of the wedding, they were incredibly professional, efficient, and our guests haven't stopped raving about the drinks. If you're looking for a cocktail company, definitely book ORPI!"
+      ]
+    },
+    "wedding-smashed": {
+      "caption": "Wedding",
+      "text": [
+        "ORPI absolutely smashed the bar service at our wedding. Very impressed from start to finish - from drinks tasting to the wedding day, everything was exceptional. All our guests were incredibly pleased with the mocktails/cocktails and service provided by ORPI. They brought great energy to our reception! Looking forward to booking with them again."
+      ]
+    },
+    "wedding-23rd": {
+      "caption": "Wedding",
+      "text": [
+        "Hey guys. A huge thank you to you all for the 23rd. The drinks never stopped flowing, and there were plenty of hangovers the next day - the sign of a great night! Everyone only had positive things to say about the drinks, the cocktails and all of the bar staff.",
+        "And we never had to wait for a drink. It was exactly what we’d hoped for, and neither of us have experienced a bar like that at a wedding before. The design for the bar was 👌🏼 and the Bombay bicycle went down well. We’ll be sure to leave you a glowing review. And hopefully we get to see you at lots of events we go to soon!"
+      ]
+    },
+    "wedding-thank-you": {
+      "caption": "Wedding",
+      "text": [
+        "Hey guys! Thank you so much for taking care of the bar for us on our wedding we knew you guys would smash it and we didn’t have to worry about anything! Of course we will thank you again it was a pleasure having you guys as part of our wedding day 💖💜"
+      ]
     }
   },
   "nudges": [
-    { "review": "private-event", "quote": "They really made my event special." },
-    { "review": "listed-building-wedding", "quote": "I wholeheartedly recommend ORPI for delivering to the highest standards." },
-    { "review": "30th-garden-party", "quote": "Both service and drinks were 10/10." },
-    { "review": "company-party", "quote": "Now I understand what a bar company brings to the party." }
+    {
+      "review": "savoy-wedding",
+      "quote": "If you're looking for a cocktail company, definitely book ORPI!"
+    },
+    {
+      "review": "private-event",
+      "quote": "They really made my event special."
+    },
+    {
+      "review": "wedding-smashed",
+      "quote": "ORPI absolutely smashed the bar service at our wedding."
+    },
+    {
+      "review": "listed-building-wedding",
+      "quote": "I wholeheartedly recommend ORPI for delivering to the highest standards."
+    },
+    {
+      "review": "21st-birthday",
+      "quote": "I would highly recommend them—you won’t be disappointed!"
+    },
+    {
+      "review": "30th-garden-party",
+      "quote": "Both service and drinks were 10/10."
+    },
+    {
+      "review": "private-party",
+      "quote": "ORPI fully came through and made the night."
+    },
+    {
+      "review": "company-party",
+      "quote": "Now I understand what a bar company brings to the party."
+    }
   ]
 }
