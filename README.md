@@ -31,6 +31,8 @@ Push a branch and Vercel gives it a preview address
 (`orpi-website-git-<branch>-orpievents-projects.vercel.app`, sign in to Vercel
 to open it). **`main` is the live site.**
 
+House rule: it's **Mehndi** (as in the booking app), never Mendhi, except where a client's review is quoted word for word (Ruds, 30 Oct 2026).
+
 House rule: never write Ilford or East London anywhere on the site. Where a place
 is needed, say London. The one exception is the legal small print at the foot of
 every page (registered name, England and Wales, company no. 16506098 and the
