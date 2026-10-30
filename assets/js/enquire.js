@@ -18,7 +18,7 @@
   var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var STEPS = ['type', 'date', 'size', 'services', 'heard', 'details'];
   // The Pipeline's names (lib/tracking.js in the ops app) and how we say them.
-  var EVENT_TYPES = [['Wedding Reception', 'Wedding'], ['Mehndi/Sangeet', 'Mehndi or Sangeet'], ['Birthday', 'Birthday'], ['Corporate', 'Corporate'], ['Other', 'Other']];
+  var EVENT_TYPES = [['Wedding Reception', 'Wedding'], ['Mendhi/Sangeet', 'Mendhi or Sangeet'], ['Birthday', 'Birthday'], ['Corporate', 'Corporate'], ['Other', 'Other']];
   var SERVICES = [
     ['Full Bar (ORPI supplies alcohol)', 'Full Bar', 'We bring everything, drinks included'],
     ['Bar Only (Client supplies alcohol)', 'Bar Only', 'You supply the alcohol, we do the rest'],
@@ -38,7 +38,7 @@
     'Bar Only': 'Bar Only (Client supplies alcohol)',
     'Custom': 'Custom'
   };
-  var OLD_EVENT = { 'Mendhi/Sangeet': 'Mehndi/Sangeet' };   // links written before the rename
+  var OLD_EVENT = { 'Mehndi/Sangeet': 'Mendhi/Sangeet' };   // links from the two days it was spelt Mehndi
   var ATTR_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'l', 'fbclid'];
   var DRAFT_KEY = 'orpi_enquiry_draft_site';
 
