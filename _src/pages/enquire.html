@@ -35,86 +35,68 @@
     </aside>
 
     <div class="eq-card" id="enquiry-card">
-      <form id="enquiry" class="eq-form" novalidate data-api="https://book.orpi.events/api/public">
-        <div class="eq-asked" id="eq-asked" hidden></div>
+      <!-- One question at a time, as the app's form (book.orpi.events/enquire,
+           Ruds 27 and 30 Oct 2026): easy questions first, contact details last.
+           assets/js/enquire.js shows one step at a time and fills the tiles. -->
+      <form id="enquiry" class="eq-form eq-steps" novalidate data-api="https://book.orpi.events/api/public">
+        <div class="eq-progress" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Question 1 of 6"><span></span></div>
+        <div class="eq-stepline">
+          <button type="button" class="eq-back" id="eq-back" hidden>‹ Back</button>
+          <span class="label eq-kicker" id="eq-kicker">Request a quote</span>
+          <span class="eq-count" id="eq-count">1 of 6</span>
+        </div>
 
+        <div class="eq-asked" id="eq-asked" hidden></div>
         <input class="eq-hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-        <div class="eq-row">
-          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required maxlength="120"></div>
-          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="07700 900000" maxlength="40"></div>
-        </div>
-        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160"></div>
+        <section class="eq-step" data-step="type">
+          <h2 class="eq-q" tabindex="-1">What are you celebrating?</h2>
+          <p class="eq-lead">Six quick questions, about a minute.</p>
+          <div class="eq-tiles" id="t-type"></div>
+        </section>
 
-        <div class="eq-row">
-          <div class="field">
-            <label for="f-type">Event type</label>
-            <select id="f-type" name="eventType" required>
-              <option value="">Choose one</option>
-              <option>Wedding Reception</option>
-              <option value="Mendhi/Sangeet">Mendhi or sangeet</option>
-              <option>Birthday</option>
-              <option>Corporate</option>
-              <option>Other</option>
-            </select>
+        <section class="eq-step" data-step="date" hidden>
+          <h2 class="eq-q" tabindex="-1">When is it?</h2>
+          <div class="field" id="exact-date"><label for="f-date">Event date</label><input id="f-date" name="eventDate" type="date"></div>
+          <div class="eq-split" id="approx" hidden>
+            <div class="field"><label for="f-month">Month</label><select id="f-month"><option value="">Month</option></select></div>
+            <div class="field"><label for="f-year">Year</label><select id="f-year"><option value="">Year</option></select></div>
           </div>
-          <div class="field">
-            <label for="f-date" id="date-label">Event date</label>
-            <input id="f-date" name="eventDate" type="date">
-            <div class="eq-split" id="approx" hidden>
-              <select id="f-month" aria-label="Month"><option value="">Month</option></select>
-              <select id="f-year" aria-label="Year"><option value="">Year</option></select>
-            </div>
-            <label class="eq-check small"><input type="checkbox" id="f-nodate"> <span>We haven’t fixed a date yet</span></label>
-          </div>
-        </div>
+          <button type="button" class="eq-textbtn" id="f-nodate">We haven’t fixed a date yet</button>
+        </section>
 
-        <div class="eq-row">
+        <section class="eq-step" data-step="size" hidden>
+          <h2 class="eq-q" tabindex="-1">How many guests, and where?</h2>
+          <p class="eq-lead">A rough idea is fine. Skip either if you’re not sure yet.</p>
           <div class="field"><label for="f-guests">Roughly how many guests?</label><input id="f-guests" name="guests" type="number" min="1" max="5000" inputmode="numeric" placeholder="e.g. 150"></div>
           <div class="field"><label for="f-venue">Venue or town</label><input id="f-venue" name="venue" maxlength="200" placeholder="Venue name, or where it is"></div>
-        </div>
+        </section>
 
-        <fieldset class="field">
-          <legend>What are you after? <span class="opt">Pick any</span></legend>
-          <div class="chips" id="services">
-            <button type="button" class="chip" aria-pressed="false" data-v="Full Bar (ORPI supplies alcohol)">Full bar, we supply the alcohol</button>
-            <button type="button" class="chip" aria-pressed="false" data-v="Bar Only (Client supplies alcohol)">Bar only, you supply the alcohol</button>
-            <button type="button" class="chip" aria-pressed="false" data-v="Cocktail Experience">Cocktail Experience</button>
-            <button type="button" class="chip" aria-pressed="false" data-v="Welcome Drinks">Welcome drinks</button>
-            <button type="button" class="chip" aria-pressed="false" data-v="Mocktails Only">Mocktails only</button>
-            <button type="button" class="chip" aria-pressed="false" data-v="Custom">Not sure yet</button>
-          </div>
-        </fieldset>
+        <section class="eq-step" data-step="services" hidden>
+          <h2 class="eq-q" tabindex="-1">What are you after?</h2>
+          <p class="eq-lead">Pick as many as you like.</p>
+          <div class="eq-tiles" id="t-services"></div>
+        </section>
 
-        <div class="eq-row">
-          <div class="field">
-            <label for="f-heard">How did you hear about us?</label>
-            <select id="f-heard" name="heard" required>
-              <option value="">Choose one</option>
-              <option value="instagram">Instagram</option>
-              <option value="event">Saw ORPI at an event</option>
-              <option value="referral">A friend or family recommendation</option>
-              <option value="previous">We’ve worked with ORPI before</option>
-              <option value="venue">Our venue</option>
-              <option value="planner">Our wedding planner</option>
-              <option value="google">Google</option>
-              <option value="tiktok">TikTok</option>
-              <option value="facebook">Facebook</option>
-              <option value="show">A wedding show</option>
-              <option value="other">Somewhere else</option>
-            </select>
-          </div>
+        <section class="eq-step" data-step="heard" hidden>
+          <h2 class="eq-q" tabindex="-1">How did you hear about us?</h2>
+          <div class="eq-tiles" id="t-heard"></div>
           <div class="field" id="who-field" hidden><label for="f-who" id="who-label">Who recommended us?</label><input id="f-who" name="referredBy" maxlength="120" placeholder="So we can say thank you"></div>
-        </div>
+        </section>
 
-
-        <div class="field"><label for="f-notes">Anything else?</label><textarea id="f-notes" name="notes" rows="4" maxlength="1300" placeholder="Theme, drinks you love, how long you’d like the bar open, questions…"></textarea></div>
-
-        <label class="eq-check"><input type="checkbox" id="f-optout"> <span>Please don’t send me occasional planning tips and offers from ORPI.</span></label>
-        <p class="eq-fine">We use your details to reply and prepare your quote, and now and then to share planning tips and offers (you can opt out any time). See our <a href="/privacy">privacy notice</a>.</p>
+        <section class="eq-step" data-step="details" hidden>
+          <h2 class="eq-q" tabindex="-1">Last one: how do we reach you?</h2>
+          <p class="eq-lead">So we can send your quote.</p>
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" maxlength="120" placeholder="Full name"></div>
+          <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" placeholder="07700 900000"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="your@email.com"></div>
+          <div class="field"><label for="f-notes">Anything else? <span class="opt">Optional</span></label><textarea id="f-notes" name="notes" rows="3" maxlength="1300" placeholder="Theme, drinks you love, how long you’d like the bar open, questions…"></textarea></div>
+          <label class="eq-check"><input type="checkbox" id="f-optout"> <span>Please don’t send me occasional planning tips and offers from ORPI.</span></label>
+          <p class="eq-fine">We use your details to reply and prepare your quote<span id="fine-offers">, and now and then to share planning tips and offers (you can opt out any time)</span>. See our <a href="/privacy">privacy notice</a>.</p>
+        </section>
 
         <div class="eq-error" id="eq-error" role="alert" hidden></div>
-        <button class="btn btn-primary eq-submit" type="submit">Send enquiry</button>
+        <button class="btn btn-primary eq-submit" type="submit" id="eq-next" hidden>Continue</button>
       </form>
 
       <div class="eq-done" id="eq-done" hidden tabindex="-1">
