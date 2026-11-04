@@ -10,7 +10,6 @@ flat surfaces, logos as SVG).
 | --- | --- | --- |
 | Home | `/` | `_src/pages/index.html` |
 | Get a quote | `/enquire` | `_src/pages/enquire.html` |
-| Terms & conditions | `/terms` | `_src/pages/terms.html` |
 | Privacy notice | `/privacy` | `_src/pages/privacy.html` |
 | Page not found | any unknown address | `_src/pages/404.html` |
 
@@ -24,8 +23,8 @@ flat surfaces, logos as SVG).
    in `assets/js/`.
 3. Run `python3 _src/build.py` from this folder and commit the generated pages
    with your change.
-4. To look at it locally with clean addresses (`/terms` rather than
-   `/terms.html`), run `npx serve .` and open http://localhost:3000.
+4. To look at it locally with clean addresses (`/privacy` rather than
+   `/privacy.html`), run `npx serve .` and open http://localhost:3000.
 
 Push a branch and Vercel gives it a preview address
 (`orpi-website-git-<branch>-orpievents-projects.vercel.app`, sign in to Vercel
@@ -41,9 +40,9 @@ set once, as `LEGAL_LINE` in `_src/build.py`.
 
 Where things come from:
 
-- **Terms** are a copy of the terms clients sign in the ops app
-  (`lib/terms.js`, version 2026-10-20). When those change, change
-  `_src/pages/terms.html` too, including the version line.
+- **Terms** aren't on the website: they're for clients only (Ruds, 4 Nov
+  2026). Clients read and accept them on their booking link in the ops app
+  (`lib/terms.js`). `/terms` redirects to the homepage.
 - **Privacy notice** describes exactly what this site and the booking system
   do. It describes our providers by what they do and never names them (Ruds,
   4 Nov 2026), the same as the booking app's notice. If the site ever adds

@@ -6,7 +6,7 @@ to the nav or footer is made once. Run from the repo root:
 
     python3 _src/build.py
 
-It writes index.html, enquire.html, terms.html, privacy.html and 404.html into the repo root. Vercel serves those files as they are (no build
+It writes index.html, enquire.html, privacy.html and 404.html into the repo root. Vercel serves those files as they are (no build
 step on Vercel). Edit the pages in _src/pages, not the generated files.
 """
 import hashlib
@@ -126,7 +126,6 @@ def footer():
         <h2>Booked with us?</h2>
         <ul>
           <li><a href="{PORTAL}">Client login</a></li>
-          <li><a href="/terms">Terms &amp; conditions</a></li>
           <li><a href="/privacy">Privacy notice</a></li>
         </ul>
       </div>
