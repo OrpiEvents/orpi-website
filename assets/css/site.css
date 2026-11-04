@@ -183,9 +183,12 @@ button { font: inherit; color: inherit; }
   to   { transform: translate3d(7%, 0, 0); }
 }
 .hero-bg.paused i { animation-play-state: paused; }
-.hero > .wrap { display: flex; flex-direction: column; justify-content: space-between; gap: clamp(36px, 5vw, 64px); }
+.hero > .wrap { display: flex; flex-direction: column; justify-content: center; gap: clamp(32px, 4vw, 48px); }
 .hero-title { margin: 0; }
-.hero-word { width: min(100%, max(520px, calc((100svh - var(--nav-h) - 350px) * 2.163))); height: auto; color: #fff; }
+/* A mark, not a banner (Ruds, 4 Nov 2026: the full-width wordmark was too
+   large). About a third of the page across on a computer, and the words and
+   buttons sit with it rather than at the foot of the screen. */
+.hero-word { width: clamp(240px, 36vw, 520px); max-width: 100%; height: auto; color: #fff; }
 .hero-foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 28px; align-items: end; }
 .hero-copy { grid-column: 1 / span 7; }
 .hero-copy .lead { color: rgba(255, 255, 255, .84); max-width: 32em; margin-bottom: 28px; }
