@@ -45,8 +45,10 @@ Where things come from:
   (`lib/terms.js`, version 2026-10-20). When those change, change
   `_src/pages/terms.html` too, including the version line.
 - **Privacy notice** describes exactly what this site and the booking system
-  do. If the site ever adds analytics, a Meta pixel or any cookie, the notice
-  (and a cookie banner) has to change first.
+  do. It describes our providers by what they do and never names them (Ruds,
+  4 Nov 2026), the same as the booking app's notice. If the site ever adds
+  analytics, a Meta pixel or any cookie, the notice (and a cookie banner) has
+  to change first.
 - **Drinks**: there's no full menu on the site on purpose. The homepage shows
   four cocktails and four sober serves at random, live from the Drinks Library
   in Notion: `assets/js/drinks.js` reads the booking app's public feed
