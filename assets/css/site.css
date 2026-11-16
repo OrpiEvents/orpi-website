@@ -189,6 +189,28 @@ button { font: inherit; color: inherit; }
    large). About a third of the page across on a computer, and the words and
    buttons sit with it rather than at the foot of the screen. */
 .hero-word { width: clamp(240px, 36vw, 520px); max-width: 100%; height: auto; color: #fff; }
+/* A real ORPI night beside the wordmark (Ruds, 16 Nov 2026): on a computer
+   the photo stands to the right of the mark and the words; on a phone it
+   sits between them, cropped to the couple and the tower, so the first
+   screen shows people and the bar. The press line rides on the photo. */
+.hero-photo { position: relative; margin: 0; overflow: hidden; border-radius: var(--r-card); background: var(--mist); }
+.hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-press { position: absolute; left: 14px; bottom: 14px; background: var(--snow); color: var(--stout); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 500; line-height: 1.2; }
+.hero-press em { font-style: italic; font-weight: 600; }
+@media (min-width: 900px) {
+  .hero > .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: auto auto; column-gap: var(--gap); row-gap: clamp(32px, 4vw, 48px); align-content: center; }
+  .hero-title { grid-column: 1 / span 7; grid-row: 1; align-self: end; }
+  .hero-foot { grid-column: 1 / span 7; grid-row: 2; display: block; align-self: start; }
+  .hero-copy { grid-column: auto; }
+  .hero-word { width: min(100%, clamp(240px, 34vw, 500px)); }
+  .hero-photo { grid-column: 8 / span 5; grid-row: 1 / span 2; align-self: center; aspect-ratio: 1206 / 1329; max-height: calc(100svh - var(--nav-h) - 96px); justify-self: end; width: 100%; }
+  .hero-photo img { object-position: 50% 30%; }
+}
+@media (max-width: 899px) {
+  .hero > .wrap { gap: 24px; }
+  .hero-photo { aspect-ratio: 4 / 3; }
+  .hero-photo img { object-position: 50% 35%; }
+}
 .hero-foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 28px; align-items: end; }
 .hero-copy { grid-column: 1 / span 7; }
 .hero-copy .lead { color: rgba(255, 255, 255, .84); max-width: 32em; margin-bottom: 28px; }
@@ -220,6 +242,14 @@ button { font: inherit; color: inherit; }
 .intro-img { grid-column: 1 / span 6; margin-top: clamp(40px, 5vw, 72px); aspect-ratio: 4 / 3; overflow: hidden; background: var(--mist); }
 .intro-img img { width: 100%; height: 100%; object-fit: cover; }
 .intro-body { grid-column: 8 / span 5; margin-top: clamp(40px, 5vw, 72px); align-self: end; }
+/* On a computer the words sit together on the left and the photo fills the
+   right, so there's no empty corner beside the heading (16 Nov 2026). */
+@media (min-width: 900px) {
+  .intro .grid { grid-template-rows: auto 1fr; align-items: start; }
+  .intro-head { grid-column: 1 / span 6; grid-row: 1; }
+  .intro-body { grid-column: 1 / span 5; grid-row: 2; margin-top: clamp(28px, 3vw, 40px); align-self: start; }
+  .intro-img { grid-column: 7 / span 6; grid-row: 1 / span 2; margin-top: 0; }
+}
 .intro-body .lead { color: var(--stout); }
 @media (max-width: 899px) {
   .intro-head, .intro-img, .intro-body { grid-column: 1 / -1; }
@@ -664,3 +694,30 @@ button { font: inherit; color: inherit; }
 .eq-tile-n { font-size: 13.5px; font-weight: 400; color: var(--muted); }
 .eq-textbtn { justify-self: start; border: 0; background: none; padding: 0; font: inherit; font-size: 15px; color: var(--stout); text-decoration: underline; text-decoration-color: var(--tangerine); text-underline-offset: 3px; cursor: pointer; }
 .eq-steps .eq-split { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── Swipe rows on a phone (16 Nov 2026) ───────────────────
+   The event types, the reviews and the drinks scroll sideways on a phone
+   instead of stacking, which takes the home page from about 25 screens to
+   about 20. The next card peeks in from the right, so it reads as a row to
+   swipe. Packages stay stacked so they're easy to compare. */
+@media (max-width: 759px) {
+  .occ-list, .rv-side, .favs, .favs-text, .partner-list {
+    display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 82%;
+    gap: 14px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .occ-list::-webkit-scrollbar, .rv-side::-webkit-scrollbar, .favs::-webkit-scrollbar, .favs-text::-webkit-scrollbar, .partner-list::-webkit-scrollbar { display: none; }
+  .occ-list > *, .rv-side > *, .favs > *, .favs-text > *, .partner-list > * { scroll-snap-align: start; }
+  .favs { grid-auto-columns: 58%; }
+  /* Event types as cards */
+  .occ-list { border-top: 0; align-items: stretch; }
+  .occ { border: 1px solid var(--line); border-radius: var(--r-card); background: var(--snow); padding: 0 0 22px; overflow: hidden; align-content: start; }
+  .occ > :not(.occ-img) { margin-inline: 18px; }
+  .occ .occ-img { margin-bottom: 4px; }
+  .occ h3 { font-size: 28px; }
+  /* Reviews as cards */
+  .rv-side { border-top: 0; align-items: start; }
+  .rv-side figure { border: 1px solid var(--dark-line); border-radius: var(--r-card); padding: 20px; }
+  .partner-list li { border-top: 1px solid var(--line); padding-top: 16px; }
+}
